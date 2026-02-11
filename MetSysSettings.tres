@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/MetroidvaniaSystem/Scripts/Settings.gd" id="1"]
+[ext_resource type="Resource" path="res://addons/MetroidvaniaSystem/Themes/Exquisite/Theme.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+theme = ExtResource("2")
+map_data_file = "res://MapData.txt"
+map_extents = 100
+scene_template = ""
+in_game_cell_size = Vector2(2000, 800)
+discover_whole_rooms = false
+cache_group_reverse_lookup = true
+custom_element_script = null

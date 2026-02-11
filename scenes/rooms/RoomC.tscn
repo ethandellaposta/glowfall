@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scripts/Door.gd" id="1"]
+[ext_resource type="PackedScene" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/CityParallax.tscn" id="4"]
+[ext_resource type="Texture2D" path="res://assets/textures/ground.png" id="5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(2000, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(60, 800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(48, 96)
+
+[node name="RoomC" type="Node2D"]
+
+[node name="CityParallax" parent="." instance=ExtResource("4")]
+
+[node name="RoomInstance" parent="." instance=ExtResource("2")]
+
+[node name="SpawnFromA" type="Marker2D" parent="."]
+position = Vector2(-820, 200)
+
+[node name="Geometry" type="Node2D" parent="."]
+
+[node name="Floor" type="Node2D" parent="Geometry"]
+position = Vector2(0, 320)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor/StaticBody2D"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(1, 1, 1, 1)
+texture = ExtResource("5")
+texture_repeat = 1
+polygon = PackedVector2Array(-1000, -30, 1000, -30, 1000, 30, -1000, 30)
+uv = PackedVector2Array(0, 0, 32, 0, 32, 1, 0, 1)
+
+[node name="LeftWall" type="Node2D" parent="Geometry"]
+position = Vector2(-1000, -40)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/LeftWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/LeftWall/StaticBody2D"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/LeftWall"]
+color = Color(0.027451, 0.0352941, 0.0941176, 1)
+polygon = PackedVector2Array(-30, -400, 30, -400, 30, 400, -30, 400)
+
+[node name="RightWall" type="Node2D" parent="Geometry"]
+position = Vector2(1000, -40)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/RightWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/RightWall/StaticBody2D"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/RightWall"]
+color = Color(0.027451, 0.0352941, 0.0941176, 1)
+polygon = PackedVector2Array(-30, -400, 30, -400, 30, 400, -30, 400)
+
+[node name="DoorToRoomA" type="Area2D" parent="."]
+position = Vector2(-930, 220)
+script = ExtResource("1")
+target_room_path = "res://scenes/rooms/RoomA.tscn"
+target_spawn = "SpawnDefault"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToRoomA"]
+shape = SubResource("RectangleShape2D_door")
+
+[node name="Polygon2D" type="Polygon2D" parent="DoorToRoomA"]
+color = Color(0.439216, 0.956863, 0.478431, 1)
+polygon = PackedVector2Array(-24, -48, 24, -48, 24, 48, -24, 48)
+
+[node name="Enemy" parent="." instance=ExtResource("3")]
+position = Vector2(200, 260)

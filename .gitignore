@@ -1,0 +1,12 @@
+# Godot 4
+.godot/
+*.import
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Export
+export/
+*.pck
+*.zip
