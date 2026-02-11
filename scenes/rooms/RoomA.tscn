@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene format=3 uid="uid://di2qiwhnvsppx"]
 
-[ext_resource type="Script" path="res://scripts/Door.gd" id="1"]
-[ext_resource type="PackedScene" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2"]
+[ext_resource type="Script" uid="uid://digj6mav5q08j" path="res://scripts/Door.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/CityParallax.tscn" id="3"]
-[ext_resource type="Texture2D" path="res://assets/textures/ground.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://4omxsl53xmdq" path="res://assets/textures/ground.png" id="4"]
+[ext_resource type="Script" uid="uid://h3nvojfdgh7g" path="res://scripts/FloorBlocks.gd" id="5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(2000, 60)
@@ -14,86 +15,86 @@ size = Vector2(60, 800)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
 size = Vector2(48, 96)
 
-[node name="RoomA" type="Node2D"]
+[node name="RoomA" type="Node2D" unique_id=1494201171]
 
-[node name="CityParallax" parent="." instance=ExtResource("3")]
+[node name="CityParallax" parent="." unique_id=1297491172 instance=ExtResource("3")]
 
-[node name="RoomInstance" parent="." instance=ExtResource("2")]
+[node name="RoomInstance" parent="." unique_id=467390513 instance=ExtResource("2")]
 
-[node name="SpawnDefault" type="Marker2D" parent="."]
+[node name="SpawnDefault" type="Marker2D" parent="." unique_id=641864430]
 position = Vector2(-820, 200)
 
-[node name="SpawnFromB" type="Marker2D" parent="."]
+[node name="SpawnFromB" type="Marker2D" parent="." unique_id=1501218139]
 position = Vector2(820, 200)
 
-[node name="Geometry" type="Node2D" parent="."]
+[node name="Geometry" type="Node2D" parent="." unique_id=420014568]
 
-[node name="Floor" type="Node2D" parent="Geometry"]
+[node name="Floor" type="Node2D" parent="Geometry" unique_id=492188164]
 position = Vector2(0, 320)
+script = ExtResource("5")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/Floor"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/Floor" unique_id=1796026326]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor/StaticBody2D" unique_id=1623525901]
 shape = SubResource("RectangleShape2D_floor")
 
-[node name="Polygon2D" type="Polygon2D" parent="Geometry/Floor"]
-color = Color(1, 1, 1, 1)
-texture = ExtResource("4")
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/Floor" unique_id=1468349194]
 texture_repeat = 1
+texture = ExtResource("4")
 polygon = PackedVector2Array(-1000, -30, 1000, -30, 1000, 30, -1000, 30)
 uv = PackedVector2Array(0, 0, 32, 0, 32, 1, 0, 1)
 
-[node name="GlowFloor" type="Polygon2D" parent="Geometry/Floor"]
+[node name="GlowFloor" type="Polygon2D" parent="Geometry/Floor" unique_id=2022327589]
 color = Color(0.133333, 0.94902, 0.780392, 0.5)
 polygon = PackedVector2Array(-1000, -32, 1000, -32, 1000, -8, -1000, -8)
 
-[node name="LeftWall" type="Node2D" parent="Geometry"]
+[node name="LeftWall" type="Node2D" parent="Geometry" unique_id=1335442272]
 position = Vector2(-1000, -40)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/LeftWall"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/LeftWall" unique_id=1486988801]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/LeftWall/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/LeftWall/StaticBody2D" unique_id=1599273009]
 shape = SubResource("RectangleShape2D_wall")
 
-[node name="Polygon2D" type="Polygon2D" parent="Geometry/LeftWall"]
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/LeftWall" unique_id=1366192024]
 color = Color(0.027451, 0.0352941, 0.0941176, 1)
 polygon = PackedVector2Array(-30, -400, 30, -400, 30, 400, -30, 400)
 
-[node name="RightWall" type="Node2D" parent="Geometry"]
+[node name="RightWall" type="Node2D" parent="Geometry" unique_id=208849271]
 position = Vector2(1000, -40)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/RightWall"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/RightWall" unique_id=1575580159]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/RightWall/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/RightWall/StaticBody2D" unique_id=705401592]
 shape = SubResource("RectangleShape2D_wall")
 
-[node name="Polygon2D" type="Polygon2D" parent="Geometry/RightWall"]
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/RightWall" unique_id=1855199153]
 color = Color(0.027451, 0.0352941, 0.0941176, 1)
 polygon = PackedVector2Array(-30, -400, 30, -400, 30, 400, -30, 400)
 
-[node name="DoorToRoomB" type="Area2D" parent="."]
+[node name="DoorToRoomB" type="Area2D" parent="." unique_id=681127279]
 position = Vector2(930, 220)
 script = ExtResource("1")
 target_room_path = "res://scenes/rooms/RoomB.tscn"
 target_spawn = "SpawnFromA"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToRoomB"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToRoomB" unique_id=1128599083]
 shape = SubResource("RectangleShape2D_door")
 
-[node name="Polygon2D" type="Polygon2D" parent="DoorToRoomB"]
+[node name="Polygon2D" type="Polygon2D" parent="DoorToRoomB" unique_id=751417798]
 color = Color(0.439216, 0.956863, 0.478431, 1)
 polygon = PackedVector2Array(-24, -48, 24, -48, 24, 48, -24, 48)
 
-[node name="DoorToRoomC" type="Area2D" parent="."]
+[node name="DoorToRoomC" type="Area2D" parent="." unique_id=656353895]
 position = Vector2(0, 220)
 script = ExtResource("1")
 target_room_path = "res://scenes/rooms/RoomC.tscn"
 target_spawn = "SpawnFromA"
 required_ability = &"double_jump"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToRoomC"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToRoomC" unique_id=379214236]
 shape = SubResource("RectangleShape2D_door")
 
-[node name="Polygon2D" type="Polygon2D" parent="DoorToRoomC"]
+[node name="Polygon2D" type="Polygon2D" parent="DoorToRoomC" unique_id=1584278582]
 color = Color(0.956863, 0.521569, 0.231373, 1)
 polygon = PackedVector2Array(-24, -48, 24, -48, 24, 48, -24, 48)
