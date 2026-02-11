@@ -30,12 +30,25 @@ func _ready() -> void:
 		sprite.animation_finished.connect(_on_sprite_animation_finished)
 
 func _physics_process(delta: float) -> void:
-	var gravity := ProjectSettings.get_setting("physics/2d/default_gravity") as float
+	var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity") as float
 	velocity.y += gravity * delta
 
-	var input_dir := Input.get_axis("ui_left", "ui_right")
-	var target_x := input_dir * speed
-	if input_dir != 0.0:
+	var input_dir_from_actions: float = Input.get_axis("ui_left", "ui_right")
+	var input_dir_from_keys: float = 0.0
+	if Input.is_key_pressed(KEY_A):
+		input_dir_from_keys -= 1.0
+	if Input.is_key_pressed(KEY_D):
+		input_dir_from_keys += 1.0
+	var input_dir: float = clamp(input_dir_from_actions + input_dir_from_keys, -1.0, 1.0)
+	var target_x: float = input_dir * speed
+
+	# Face toward the mouse cursor if it is meaningfully offset; otherwise
+	# fall back to movement direction.
+	var mouse_pos: Vector2 = get_global_mouse_position()
+	var dx: float = mouse_pos.x - global_position.x
+	if absf(dx) > 2.0:
+		_facing = 1 if dx > 0.0 else -1
+	elif input_dir != 0.0:
 		_facing = 1 if input_dir > 0.0 else -1
 	if is_instance_valid(attack_area):
 		attack_area.position.x = 24.0 * float(_facing)
@@ -45,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = lerp(velocity.x, target_x, air_control)
 
-	var max_jumps := Global.get_max_jumps()
+	var max_jumps: int = Global.get_max_jumps()
 	if Input.is_action_just_pressed("ui_accept") and (_jumps_used < max_jumps):
 		velocity.y = jump_velocity
 		_jumps_used += 1
@@ -67,7 +80,7 @@ func _do_attack() -> void:
 	_attack_timer = attack_cooldown
 	if not is_instance_valid(attack_area):
 		return
-	var bodies := attack_area.get_overlapping_bodies()
+	var bodies: Array = attack_area.get_overlapping_bodies()
 	for b in bodies:
 		if is_instance_valid(b) and b.has_method("take_hit"):
 			var dir := float(_facing)
@@ -79,7 +92,7 @@ func _update_wheel(delta: float) -> void:
 		return
 	if wheel_radius <= 0.0:
 		return
-	var vx := velocity.x
+	var vx: float = velocity.x
 	if vx == 0.0:
 		return
 	wheel.rotation -= (vx / wheel_radius) * delta
@@ -118,7 +131,7 @@ func _update_animation() -> void:
 func _setup_sprite_frames() -> void:
 	if not is_instance_valid(sprite):
 		return
-	var frames := SpriteFrames.new()
+	var frames: SpriteFrames = SpriteFrames.new()
 	_add_animation_mode(frames, "idle", "idle", 5, 6.0, true)
 	_add_animation_mode(frames, "walking", "walking", 5, 10.0, true)
 	_add_animation_mode(frames, "attack-1-ing", "attack-1-ing", 5, 12.0, false)
@@ -133,8 +146,8 @@ func _add_animation_mode(frames: SpriteFrames, anim_name: String, mode_name: Str
 	frames.set_animation_speed(anim_name, speed)
 	frames.set_animation_loop(anim_name, loop)
 	for i in range(frame_count):
-		var path := "res://assets/textures/robot_%s_%02d.png" % [mode_name, i]
-		var tex := load(path)
+		var path: String = "res://assets/textures/robot_%s_%02d.png" % [mode_name, i]
+		var tex: Texture2D = load(path) as Texture2D
 		if tex != null:
 			frames.add_frame(anim_name, tex)
 

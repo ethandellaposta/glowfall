@@ -15,6 +15,7 @@ script = ExtResource("1")
 shape = SubResource("RectangleShape2D_1")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.231373, 0.509804, 0.964706, 1)
 polygon = PackedVector2Array(-14, -26, 14, -26, 14, 26, -14, 26)
 
@@ -33,6 +34,7 @@ shape = SubResource("RectangleShape2D_Attack")
 position = Vector2(0, 26)
 
 [node name="WheelVisual" type="Polygon2D" parent="Wheel"]
+visible = false
 color = Color(0.8, 0.8, 0.85, 1)
 polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
 
