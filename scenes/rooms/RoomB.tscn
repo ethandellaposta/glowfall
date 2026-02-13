@@ -3,9 +3,7 @@
 [ext_resource type="Script" path="res://scripts/Door.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/AbilityPickup.gd" id="2"]
 [ext_resource type="PackedScene" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/Enemy.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/CityParallax.tscn" id="5"]
-[ext_resource type="Texture2D" path="res://assets/textures/ground.png" id="6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(2000, 60)
@@ -43,7 +41,6 @@ shape = SubResource("RectangleShape2D_floor")
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/Floor"]
 color = Color(1, 1, 1, 1)
-texture = ExtResource("6")
 texture_repeat = 1
 polygon = PackedVector2Array(-1000, -30, 1000, -30, 1000, 30, -1000, 30)
 uv = PackedVector2Array(0, 0, 32, 0, 32, 1, 0, 1)
@@ -82,7 +79,6 @@ shape = SubResource("RectangleShape2D_platform")
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/Platform"]
 color = Color(1, 1, 1, 1)
-texture = ExtResource("6")
 texture_repeat = 1
 polygon = PackedVector2Array(-140, -20, 140, -20, 140, 20, -140, 20)
 uv = PackedVector2Array(0, 0, 4, 0, 4, 0.625, 0, 0.625)
@@ -116,5 +112,5 @@ shape = SubResource("RectangleShape2D_pickup")
 color = Color(0.917647, 0.298039, 0.694118, 1)
 polygon = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)
 
-[node name="Enemy" parent="." instance=ExtResource("4")]
+[node name="EnemySpawn1" type="Marker2D" parent="."]
 position = Vector2(-200, 260)

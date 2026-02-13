@@ -3,6 +3,8 @@ extends Node2D
 @export var default_room_path: String = "res://scenes/rooms/RoomA.tscn"
 @export var default_spawn: String = "SpawnDefault"
 
+@export var enemy_scene: PackedScene = preload("res://scenes/Enemy.tscn")
+
 const METSYS_ORIGIN_OFFSET := Vector2(1000.0, 400.0)
 
 @onready var room_root: Node2D = $RoomRoot
@@ -51,6 +53,7 @@ func load_room(room_path: String, spawn_name: String) -> void:
 		return
 	var room: Node = packed.instantiate()
 	room_root.add_child(room)
+	_spawn_room_enemies(room)
 	var spawn_node := room.get_node_or_null(spawn_name)
 	if not is_instance_valid(player):
 		return
@@ -61,6 +64,19 @@ func load_room(room_path: String, spawn_name: String) -> void:
 	Global.current_room_path = room_path
 	Global.current_spawn = spawn_name
 	Global.save()
+
+func _spawn_room_enemies(room: Node) -> void:
+	if room == null:
+		return
+	if enemy_scene == null:
+		return
+	var spawns := room.find_children("EnemySpawn*", "Marker2D", true, false)
+	for s in spawns:
+		if s is Marker2D:
+			var e := enemy_scene.instantiate()
+			room.add_child(e)
+			if e is Node2D:
+				(e as Node2D).global_position = (s as Marker2D).global_position
 
 func _update_hud() -> void:
 	if hud == null:

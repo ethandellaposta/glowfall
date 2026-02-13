@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://digj6mav5q08j" path="res://scripts/Door.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/CityParallax.tscn" id="3"]
-[ext_resource type="Texture2D" uid="uid://4omxsl53xmdq" path="res://assets/textures/ground.png" id="4"]
 [ext_resource type="Script" uid="uid://h3nvojfdgh7g" path="res://scripts/FloorBlocks.gd" id="5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
@@ -40,7 +39,6 @@ shape = SubResource("RectangleShape2D_floor")
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/Floor" unique_id=1468349194]
 texture_repeat = 1
-texture = ExtResource("4")
 polygon = PackedVector2Array(-1000, -30, 1000, -30, 1000, 30, -1000, 30)
 uv = PackedVector2Array(0, 0, 32, 0, 32, 1, 0, 1)
 

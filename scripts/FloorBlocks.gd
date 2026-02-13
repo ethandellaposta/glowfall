@@ -8,9 +8,11 @@ extends Node2D
 @export var glow_color: Color = Color(0.133333, 0.94902, 0.780392, 0.3)
 @export var glow_height: float = 24.0
 @export var glow_top_offset: float = -8.0
-@export var texture: Texture2D = preload("res://assets/textures/ground.png")
+@export var texture: Texture2D
 
 func _ready() -> void:
+	if texture == null:
+		return
 	var original_polygons: Array[Polygon2D] = []
 	for child in get_children():
 		if child is Polygon2D:

@@ -10,3 +10,8 @@ Thumbs.db
 export/
 *.pck
 *.zip
+*.mov
+*_frames
+
+// placeholder animations for now
+assets/robot
