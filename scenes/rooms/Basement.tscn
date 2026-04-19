@@ -1,0 +1,253 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scenes/rooms/Door.gd" id="1"]
+[ext_resource type="PackedScene" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/objects/CityParallax.tscn" id="3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(2000, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(60, 800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(48, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceiling"]
+size = Vector2(2000, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(240, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform2"]
+size = Vector2(200, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform3"]
+size = Vector2(280, 40)
+
+[node name="Basement" type="Node2D"]
+
+[node name="CityParallax" parent="." instance=ExtResource("3")]
+
+[node name="RoomInstance" parent="." instance=ExtResource("2")]
+
+[node name="SpawnFromAlley" type="Marker2D" parent="."]
+position = Vector2(-860, 360)
+
+[node name="Geometry" type="Node2D" parent="."]
+
+[node name="Floor" type="Node2D" parent="Geometry"]
+position = Vector2(0, 420)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor/StaticBody2D"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="FloorVisual" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.065, 0.06, 0.055, 1)
+polygon = PackedVector2Array(-1000, -30, 1000, -30, 1000, 30, -1000, 30)
+
+[node name="FloorHighlight" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.085, 0.08, 0.07, 1)
+polygon = PackedVector2Array(-1000, -30, 1000, -30, 1000, -24, -1000, -24)
+
+[node name="FloorPuddle1" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.04, 0.08, 0.12, 0.35)
+polygon = PackedVector2Array(-500, -28, -300, -28, -280, -18, -520, -18)
+
+[node name="FloorPuddle2" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.04, 0.08, 0.12, 0.3)
+polygon = PackedVector2Array(200, -28, 400, -28, 420, -20, 180, -20)
+
+[node name="FloorPuddle3" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.04, 0.08, 0.12, 0.25)
+polygon = PackedVector2Array(600, -26, 750, -26, 760, -18, 590, -18)
+
+[node name="Ceiling" type="Node2D" parent="Geometry"]
+position = Vector2(0, 60)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/Ceiling"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Ceiling/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ceiling")
+
+[node name="CeilingVisual" type="Polygon2D" parent="Geometry/Ceiling"]
+color = Color(0.06, 0.055, 0.05, 1)
+polygon = PackedVector2Array(-1000, -30, 1000, -30, 1000, 30, -1000, 30)
+
+[node name="UnderFill" type="Polygon2D" parent="Geometry"]
+z_index = -10
+color = Color(0.03, 0.03, 0.04, 1)
+polygon = PackedVector2Array(-1200, 420, 1200, 420, 1200, 2000, -1200, 2000)
+
+[node name="AboveFill" type="Polygon2D" parent="Geometry"]
+z_index = -10
+color = Color(0.03, 0.03, 0.04, 1)
+polygon = PackedVector2Array(-1200, -600, 1200, -600, 1200, 60, -1200, 60)
+
+[node name="BackWall" type="Polygon2D" parent="Geometry"]
+z_index = -5
+color = Color(0.055, 0.05, 0.045, 1)
+polygon = PackedVector2Array(-1000, 60, 1000, 60, 1000, 420, -1000, 420)
+
+[node name="BackWallPipe1" type="Polygon2D" parent="Geometry"]
+z_index = -4
+color = Color(0.1, 0.1, 0.12, 0.7)
+polygon = PackedVector2Array(-800, 90, -794, 90, -794, 390, -800, 390)
+
+[node name="BackWallPipe2" type="Polygon2D" parent="Geometry"]
+z_index = -4
+color = Color(0.1, 0.1, 0.12, 0.65)
+polygon = PackedVector2Array(-400, 90, -394, 90, -394, 390, -400, 390)
+
+[node name="BackWallPipe3" type="Polygon2D" parent="Geometry"]
+z_index = -4
+color = Color(0.1, 0.1, 0.12, 0.7)
+polygon = PackedVector2Array(200, 90, 206, 90, 206, 390, 200, 390)
+
+[node name="BackWallPipe4" type="Polygon2D" parent="Geometry"]
+z_index = -4
+color = Color(0.1, 0.1, 0.12, 0.6)
+polygon = PackedVector2Array(600, 90, 606, 90, 606, 390, 600, 390)
+
+[node name="BackWallPipeH1" type="Polygon2D" parent="Geometry"]
+z_index = -4
+color = Color(0.1, 0.1, 0.12, 0.6)
+polygon = PackedVector2Array(-800, 200, -394, 200, -394, 206, -800, 206)
+
+[node name="BackWallPipeH2" type="Polygon2D" parent="Geometry"]
+z_index = -4
+color = Color(0.1, 0.1, 0.12, 0.55)
+polygon = PackedVector2Array(200, 280, 606, 280, 606, 286, 200, 286)
+
+[node name="BackWallStain1" type="Polygon2D" parent="Geometry"]
+z_index = -4
+color = Color(0.04, 0.05, 0.03, 0.35)
+polygon = PackedVector2Array(-650, 100, -500, 100, -490, 250, -660, 250)
+
+[node name="BackWallStain2" type="Polygon2D" parent="Geometry"]
+z_index = -4
+color = Color(0.04, 0.05, 0.03, 0.3)
+polygon = PackedVector2Array(300, 150, 500, 150, 510, 320, 290, 320)
+
+[node name="BackWallStain3" type="Polygon2D" parent="Geometry"]
+z_index = -4
+color = Color(0.04, 0.05, 0.03, 0.25)
+polygon = PackedVector2Array(-200, 250, 50, 250, 60, 380, -210, 380)
+
+[node name="BackWallMoss1" type="Polygon2D" parent="Geometry"]
+z_index = -3
+color = Color(0.05, 0.14, 0.06, 0.5)
+polygon = PackedVector2Array(-900, 350, -820, 340, -780, 360, -790, 390, -850, 400, -910, 380)
+
+[node name="BackWallMoss2" type="Polygon2D" parent="Geometry"]
+z_index = -3
+color = Color(0.05, 0.14, 0.06, 0.45)
+polygon = PackedVector2Array(700, 320, 780, 310, 820, 330, 810, 370, 750, 380, 690, 360)
+
+[node name="BackWallFungus1" type="Polygon2D" parent="Geometry"]
+z_index = -3
+color = Color(0.15, 0.5, 0.25, 0.4)
+polygon = PackedVector2Array(-150, 370, -130, 360, -110, 375, -115, 395, -140, 400, -155, 390)
+
+[node name="BackWallFungus2" type="Polygon2D" parent="Geometry"]
+z_index = -3
+color = Color(0.12, 0.45, 0.2, 0.35)
+polygon = PackedVector2Array(420, 360, 445, 350, 465, 365, 460, 390, 435, 400, 415, 385)
+
+[node name="LeftWall" type="Node2D" parent="Geometry"]
+position = Vector2(-1000, 60)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/LeftWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/LeftWall/StaticBody2D"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/LeftWall"]
+color = Color(0.04, 0.04, 0.05, 1)
+polygon = PackedVector2Array(-30, -400, 30, -400, 30, 400, -30, 400)
+
+[node name="RightWall" type="Node2D" parent="Geometry"]
+position = Vector2(1000, 60)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/RightWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/RightWall/StaticBody2D"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/RightWall"]
+color = Color(0.04, 0.04, 0.05, 1)
+polygon = PackedVector2Array(-30, -400, 30, -400, 30, 400, -30, 400)
+
+[node name="Platform1" type="Node2D" parent="Geometry"]
+position = Vector2(-600, 280)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/Platform1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Platform1/StaticBody2D"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Visual" type="Polygon2D" parent="Geometry/Platform1"]
+color = Color(0.07, 0.065, 0.06, 1)
+polygon = PackedVector2Array(-120, -20, 120, -20, 120, 20, -120, 20)
+
+[node name="GlowTop" type="Polygon2D" parent="Geometry/Platform1"]
+color = Color(0.133333, 0.94902, 0.780392, 0.25)
+polygon = PackedVector2Array(-120, -24, 120, -24, 120, -6, -120, -6)
+
+[node name="Platform2" type="Node2D" parent="Geometry"]
+position = Vector2(-100, 200)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/Platform2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Platform2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_platform2")
+
+[node name="Visual" type="Polygon2D" parent="Geometry/Platform2"]
+color = Color(0.07, 0.065, 0.06, 1)
+polygon = PackedVector2Array(-100, -20, 100, -20, 100, 20, -100, 20)
+
+[node name="GlowTop" type="Polygon2D" parent="Geometry/Platform2"]
+color = Color(0.133333, 0.94902, 0.780392, 0.25)
+polygon = PackedVector2Array(-100, -24, 100, -24, 100, -6, -100, -6)
+
+[node name="Platform3" type="Node2D" parent="Geometry"]
+position = Vector2(500, 300)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/Platform3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Platform3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_platform3")
+
+[node name="Visual" type="Polygon2D" parent="Geometry/Platform3"]
+color = Color(0.07, 0.065, 0.06, 1)
+polygon = PackedVector2Array(-140, -20, 140, -20, 140, 20, -140, 20)
+
+[node name="GlowTop" type="Polygon2D" parent="Geometry/Platform3"]
+color = Color(0.133333, 0.94902, 0.780392, 0.25)
+polygon = PackedVector2Array(-140, -24, 140, -24, 140, -6, -140, -6)
+
+[node name="DoorToAlley" type="Area2D" parent="."]
+position = Vector2(-930, 310)
+script = ExtResource("1")
+target_room_path = "res://scenes/rooms/Alley.tscn"
+target_spawn = "SpawnFromBasement"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToAlley"]
+shape = SubResource("RectangleShape2D_door")
+
+[node name="EnemySpawn1" type="Marker2D" parent="."]
+position = Vector2(-500, 360)
+
+[node name="EnemySpawn2" type="Marker2D" parent="."]
+position = Vector2(-100, 360)
+
+[node name="EnemySpawn3" type="Marker2D" parent="."]
+position = Vector2(300, 360)
+
+[node name="EnemySpawn4" type="Marker2D" parent="."]
+position = Vector2(700, 360)
+
+[node name="EnemySpawn5" type="Marker2D" parent="."]
+position = Vector2(500, 250)

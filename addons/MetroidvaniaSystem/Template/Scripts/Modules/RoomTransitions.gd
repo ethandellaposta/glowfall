@@ -14,13 +14,16 @@ func _on_room_changed(target_room: String):
 	if target_room == MetSys.get_current_room_id():
 		# This can happen when teleporting to another room.
 		return
-	
+
 	var prev_room_instance := MetSys.get_current_room_instance()
 	if prev_room_instance:
 		prev_room_instance.get_parent().remove_child(prev_room_instance)
-	
+
 	await game.load_room(target_room)
-	
-	if prev_room_instance:
+
+	var apply_offset := true
+	if game != null and game.has_method("_should_apply_room_transition_offset"):
+		apply_offset = bool(game.call("_should_apply_room_transition_offset"))
+	if prev_room_instance and apply_offset:
 		player.position -= MetSys.get_current_room_instance().get_room_position_offset(prev_room_instance)
 		prev_room_instance.queue_free()

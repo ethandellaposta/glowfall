@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "kill-godot",
+      "type": "shell",
+      "command": "pkill -f 'Godot.*--path' || true",
+      "presentation": {
+        "reveal": "silent",
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "run-godot",
+      "type": "shell",
+      "command": "/Applications/Godot.app/Contents/MacOS/Godot",
+      "args": [
+        "--path",
+        "${workspaceFolder}"
+      ],
+      "dependsOn": "kill-godot",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent"
+      },
+      "isBackground": true
+    }
+  ]
+}

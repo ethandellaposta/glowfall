@@ -1,0 +1,20 @@
+// generate for me, all scripts gen, etc should utilize power of workspaces
+
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    // godot tools
+    "godotTools.editorPath.godot4": "/Applications/Godot.app/Contents/MacOS/Godot",
+    // github dark theme
+    "workbench.colorTheme": "GitHub Dark",
+    // hide Godot clutter
+    "files.exclude": {
+      "**/*.uid": true,
+      ".godot/": true
+    }
+  }
+}

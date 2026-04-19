@@ -1,0 +1,58 @@
+[gd_scene format=3]
+
+[node name="InteriorBackdrop" type="Node2D"]
+
+[node name="WallFillAbove" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(-50000, -50000, 50000, -50000, 50000, 60, -50000, 60)
+
+[node name="WallFillCeilingLeft" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(-50000, 60, -120, 60, -120, 168, -50000, 168)
+
+[node name="WallFillCeilingRight" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(120, 60, 50000, 60, 50000, 168, 120, 168)
+
+[node name="WallFillBelowWindows" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(-50000, 342, 50000, 342, 50000, 50000, -50000, 50000)
+
+[node name="WallFillLeftOfWindows" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(-50000, 168, -830, 168, -830, 342, -50000, 342)
+
+[node name="WallFillRightOfWindows" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(830, 168, 50000, 168, 50000, 342, 830, 342)
+
+[node name="WallFillPillarAB" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(-670, 168, -580, 168, -580, 342, -670, 342)
+
+[node name="WallFillPillarBC" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(-420, 168, -330, 168, -330, 342, -420, 342)
+
+[node name="WallFillPillarCD" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(-170, 168, 170, 168, 170, 342, -170, 342)
+
+[node name="WallFillPillarDE" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(330, 168, 420, 168, 420, 342, 330, 342)
+
+[node name="WallFillPillarEF" type="Polygon2D" parent="."]
+z_index = -20
+color = Color(0.14, 0.14, 0.18, 1)
+polygon = PackedVector2Array(580, 168, 670, 168, 670, 342, 580, 342)

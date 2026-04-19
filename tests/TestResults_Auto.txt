@@ -1,0 +1,41 @@
+═══ Glowfall Self-Test Started ═══
+Time: 2026-04-19T18:28:47
+
+  PASS  [SETUP] Game loaded, player found
+Player start position: (0.0, 329.999)
+
+── Test: Player On Floor ──
+  PASS  [FLOOR] Player is on the floor
+
+── Test: Move Right ──
+  before_x=0.0  after_x=103.0  delta=103.0
+  PASS  [MOVE_RIGHT] Player moved right by 103.0 px
+
+── Test: Move Left ──
+  before_x=102.4  after_x=-15.3  delta=117.7
+  PASS  [MOVE_LEFT] Player moved left by 117.7 px
+
+── Test: Jump ──
+  floor_y=329.9  air_y=203.9  lift=126.0
+  PASS  [JUMP] Player jumped 126.0 px upward
+
+── Test: No Floor Fall-Through at Center ──
+  Center walk: pos=(38.45201, 329.9985)
+  PASS  [NO_FALLTHROUGH] Player stayed on floor at center (y=330.0)
+
+── Test: Enemies Spawned ──
+  Found 4 enemies
+  PASS  [ENEMIES] Found 4 enemies in room
+
+── Test: Attack ──
+  PASS  [ATTACK] Attack executed without crash
+
+── Test: Crouch ──
+  PASS  [CROUCH] Crouch executed without crash
+
+── Test: Door Transition ──
+  Walking to right door...
+  PASS  [DOOR] Room transition triggered (rooms loaded: 3)
+
+═══ Results: 10 passed, 0 failed ═══
+ALL TESTS PASSED

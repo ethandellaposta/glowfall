@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Glowfall",
+      "type": "godot",
+      "request": "launch",
+      "project": "${workspaceFolder}",
+      "editor_path": "/Applications/Godot.app/Contents/MacOS/Godot",
+      "port": 6007,
+      "address": "127.0.0.1",
+      "preLaunchTask": "kill-godot"
+    }
+  ]
+}

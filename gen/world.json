@@ -1,0 +1,4332 @@
+{
+  "meta": {
+    "seed": 434671998,
+    "biome": "biolume_canopy",
+    "grid": {
+      "width": 20,
+      "height": 12
+    },
+    "room_px": {
+      "w": 2000,
+      "h": 1200
+    },
+    "counts": {
+      "rooms": 36,
+      "edges": 49
+    },
+    "critical_path_length": 14,
+    "lock": {
+      "name": "double_jump",
+      "edge": {
+        "a": 8,
+        "b": 9
+      },
+      "key_room": 20
+    },
+    "start_room": 0,
+    "boss_room": 13
+  },
+  "rooms": [
+    {
+      "id": 0,
+      "x": 10,
+      "y": 6,
+      "biome": "biolume_canopy",
+      "tags": [
+        "start"
+      ],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 14,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 1,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 19,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          }
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "x": 10,
+      "y": 5,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 2,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 15,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 0,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "x": 11,
+      "y": 5,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 260,
+            "y": 300,
+            "w": 280,
+            "h": 40
+          },
+          {
+            "x": -520,
+            "y": 180,
+            "w": 360,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 3,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 14,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 1,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "x": 12,
+      "y": 5,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 32,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 4,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "W",
+            "to": 2,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "x": 12,
+      "y": 4,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 21,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 16,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 3,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 5,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "x": 11,
+      "y": 4,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 4,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 6,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "W",
+            "to": 15,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "x": 11,
+      "y": 3,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 16,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 18,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 5,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 7,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "x": 10,
+      "y": 3,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 6,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 17,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "W",
+            "to": 8,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "x": 9,
+      "y": 3,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 7,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 24,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 9,
+            "kind": "locked",
+            "lock": "double_jump",
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 35,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "x": 9,
+      "y": 4,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "N",
+            "to": 8,
+            "kind": "locked",
+            "lock": "double_jump",
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 10,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 26,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "x": 9,
+      "y": 5,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "N",
+            "to": 9,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 11,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 22,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "x": 9,
+      "y": 6,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "N",
+            "to": 10,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "W",
+            "to": 12,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "x": 8,
+      "y": 6,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 11,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 22,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 13,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 29,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "x": 8,
+      "y": 7,
+      "biome": "biolume_canopy",
+      "tags": [
+        "boss"
+      ],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 20,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 12,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "W",
+            "to": 31,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "x": 11,
+      "y": 6,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 27,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 2,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 25,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 0,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "x": 10,
+      "y": 4,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 420,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 5,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 1,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          }
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "x": 12,
+      "y": 3,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 34,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 23,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 4,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 6,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "x": 10,
+      "y": 2,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 0,
+            "y": 300,
+            "w": 280,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 18,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 7,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 24,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "x": 11,
+      "y": 2,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "N",
+            "to": 28,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 6,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 17,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "x": 10,
+      "y": 7,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "N",
+            "to": 0,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "W",
+            "to": 20,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "x": 9,
+      "y": 7,
+      "biome": "biolume_canopy",
+      "tags": [
+        "key"
+      ],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 200,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 19,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "W",
+            "to": 13,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "x": 13,
+      "y": 4,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "N",
+            "to": 34,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 32,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 4,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "x": 8,
+      "y": 5,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 10,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 26,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 12,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          }
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "x": 12,
+      "y": 2,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "N",
+            "to": 30,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 16,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          }
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "x": 9,
+      "y": 2,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -260,
+            "y": 300,
+            "w": 280,
+            "h": 40
+          },
+          {
+            "x": 340,
+            "y": 60,
+            "w": 240,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 17,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 8,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          }
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "x": 11,
+      "y": 7,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 33,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 14,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "x": 8,
+      "y": 4,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 9,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 35,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 22,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          }
+        ]
+      }
+    },
+    {
+      "id": 27,
+      "x": 12,
+      "y": 6,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -260,
+            "y": 300,
+            "w": 420,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "S",
+            "to": 33,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 14,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "x": 11,
+      "y": 1,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -260,
+            "y": 300,
+            "w": 280,
+            "h": 40
+          },
+          {
+            "x": -520,
+            "y": 180,
+            "w": 280,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 30,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 18,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          }
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "x": 7,
+      "y": 6,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 260,
+            "y": 180,
+            "w": 280,
+            "h": 40
+          },
+          {
+            "x": 340,
+            "y": 60,
+            "w": 280,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 12,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 31,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          }
+        ]
+      }
+    },
+    {
+      "id": 30,
+      "x": 12,
+      "y": 1,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": -520,
+            "y": 180,
+            "w": 360,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "S",
+            "to": 23,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 28,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 31,
+      "x": 7,
+      "y": 7,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 13,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "N",
+            "to": 29,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 32,
+      "x": 13,
+      "y": 5,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "N",
+            "to": 21,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "W",
+            "to": 3,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 33,
+      "x": 12,
+      "y": 7,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": 0,
+            "y": 420,
+            "w": 2000,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 180,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 520,
+            "y": 60,
+            "w": 360,
+            "h": 40
+          },
+          {
+            "x": 0,
+            "y": 60,
+            "w": 320,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": 0,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": 0,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "N",
+            "to": 27,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromS",
+            "shape": "door",
+            "x": 0,
+            "y": 180,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "W",
+            "to": 25,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 34,
+      "x": 13,
+      "y": 3,
+      "biome": "biolume_canopy",
+      "tags": [
+        "ability"
+      ],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -520,
+            "y": 300,
+            "w": 360,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "S",
+            "to": 21,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          },
+          {
+            "dir": "W",
+            "to": 16,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromE",
+            "shape": "door",
+            "x": -930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": 35,
+      "x": 8,
+      "y": 3,
+      "biome": "biolume_canopy",
+      "tags": [],
+      "layout": {
+        "platforms": [
+          {
+            "x": -580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": 580,
+            "y": 420,
+            "w": 840,
+            "h": 60
+          },
+          {
+            "x": -1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": 1000,
+            "y": 60,
+            "w": 60,
+            "h": 800
+          },
+          {
+            "x": -260,
+            "y": 300,
+            "w": 420,
+            "h": 40
+          },
+          {
+            "x": 260,
+            "y": 180,
+            "w": 240,
+            "h": 40
+          },
+          {
+            "x": -340,
+            "y": 60,
+            "w": 200,
+            "h": 40
+          }
+        ],
+        "spawns": {
+          "SpawnDefault": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromW": {
+            "x": -860,
+            "y": 210
+          },
+          "SpawnFromE": {
+            "x": 860,
+            "y": 210
+          },
+          "SpawnFromN": {
+            "x": -580,
+            "y": 120
+          },
+          "SpawnFromS": {
+            "x": -580,
+            "y": 210
+          }
+        },
+        "exits": [
+          {
+            "dir": "E",
+            "to": 8,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromW",
+            "shape": "door",
+            "x": 930,
+            "y": 310,
+            "w": 48,
+            "h": 96
+          },
+          {
+            "dir": "S",
+            "to": 26,
+            "kind": "open",
+            "lock": null,
+            "target_spawn": "SpawnFromN",
+            "shape": "hole",
+            "x": 0,
+            "y": 520,
+            "w": 240,
+            "h": 200
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "a": 0,
+      "b": 1,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 1,
+      "b": 2,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 2,
+      "b": 3,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 3,
+      "b": 4,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 4,
+      "b": 5,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 5,
+      "b": 6,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 6,
+      "b": 7,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 7,
+      "b": 8,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 8,
+      "b": 9,
+      "dir": "S",
+      "kind": "locked",
+      "lock": "double_jump"
+    },
+    {
+      "a": 9,
+      "b": 10,
+      "dir": "S",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 10,
+      "b": 11,
+      "dir": "S",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 11,
+      "b": 12,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 12,
+      "b": 13,
+      "dir": "S",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 0,
+      "b": 14,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 14,
+      "b": 2,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 1,
+      "b": 15,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 15,
+      "b": 5,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 4,
+      "b": 16,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 16,
+      "b": 6,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 7,
+      "b": 17,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 6,
+      "b": 18,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 18,
+      "b": 17,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 0,
+      "b": 19,
+      "dir": "S",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 13,
+      "b": 20,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 20,
+      "b": 19,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 4,
+      "b": 21,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 10,
+      "b": 22,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 22,
+      "b": 12,
+      "dir": "S",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 16,
+      "b": 23,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 17,
+      "b": 24,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 14,
+      "b": 25,
+      "dir": "S",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 22,
+      "b": 26,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 26,
+      "b": 9,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 14,
+      "b": 27,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 18,
+      "b": 28,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 12,
+      "b": 29,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 23,
+      "b": 30,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 30,
+      "b": 28,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 13,
+      "b": 31,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 31,
+      "b": 29,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 3,
+      "b": 32,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 32,
+      "b": 21,
+      "dir": "N",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 25,
+      "b": 33,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 16,
+      "b": 34,
+      "dir": "E",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 8,
+      "b": 35,
+      "dir": "W",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 35,
+      "b": 26,
+      "dir": "S",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 27,
+      "b": 33,
+      "dir": "S",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 34,
+      "b": 21,
+      "dir": "S",
+      "kind": "open",
+      "lock": null
+    },
+    {
+      "a": 24,
+      "b": 8,
+      "dir": "S",
+      "kind": "open",
+      "lock": null
+    }
+  ]
+}

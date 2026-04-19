@@ -4,7 +4,7 @@ extends Control
 func _notification(what: int) -> void:
 	if is_part_of_edited_scene():
 		return
-	
+
 	if what == NOTIFICATION_THEME_CHANGED:
 		%ValidationPanel.add_theme_stylebox_override(&"panel", get_theme_stylebox(&"panel", &"Tree"))
 
@@ -14,7 +14,7 @@ func edit_settings_pressed():
 func force_reload() -> void:
 	MetSys.map_data = MetSys.MapData.new()
 	MetSys.map_data.load_data()
-	
+
 	for group in MetSys.map_data.cell_groups.values():
 		var i: int
 		while i < group.size():
@@ -22,9 +22,13 @@ func force_reload() -> void:
 				i += 1
 			else:
 				group.remove_at(i)
-	
-	%"Map Editor".refresh()
-	%"Map Viewer".refresh()
+
+	var map_editor := find_child("Map Editor", true, false)
+	if map_editor != null and map_editor.has_method("refresh"):
+		map_editor.call("refresh")
+	var map_viewer := find_child("Map Viewer", true, false)
+	if map_viewer != null and map_viewer.has_method("refresh"):
+		map_viewer.call("refresh")
 	owner.update_md_info()
 
 func edit_database_theme() -> void:
@@ -32,7 +36,7 @@ func edit_database_theme() -> void:
 
 func reset_theme() -> void:
 	%AllowReset.button_pressed = false
-	
+
 	var th: Theme = owner.theme
 	th.set_color(&"cursor_color", &"MetSys", Color.GREEN)
 	th.set_color(&"cursor_color_erase", &"MetSys", Color.RED)
@@ -67,14 +71,14 @@ func export_json() -> void:
 
 func json_file_selected(path: String) -> void:
 	var map_data: Dictionary
-	
+
 	var cells: Dictionary
 	map_data["cells"] = cells
-	
+
 	for cell in MetSys.map_data.cells:
 		var cell_to_save: Dictionary
 		cells["%s,%s,%s" % [cell.x, cell.y, cell.z]] = cell_to_save
-		
+
 		var cell_data := MetSys.map_data.get_cell_at(cell)
 		cell_to_save["borders"] = cell_data.borders
 		if cell_data.symbol > -1:
@@ -86,39 +90,39 @@ func json_file_selected(path: String) -> void:
 				return "000000" if color.a == 0 else color.to_html(false))
 		if not cell_data.scene.is_empty():
 			cell_to_save["scene"] = cell_data.scene
-	
+
 	var groups: Dictionary
-	
+
 	for group in MetSys.map_data.cell_groups:
 		var group_cells: Array[Vector3i]
 		group_cells.assign(MetSys.map_data.cell_groups[group])
-		
+
 		if group_cells.is_empty():
 			continue
-		
+
 		var group_to_save: Array
 		groups[group] = group_to_save
-		
+
 		for cell in group_cells:
 			group_to_save.append("%s,%s,%s" % [cell.x, cell.y, cell.z])
-	
+
 	if not groups.is_empty():
 		map_data["groups"] = groups
-	
+
 	var elements: Dictionary
-	
+
 	for element in MetSys.map_data.custom_elements:
 		var element_to_save: Dictionary
 		elements["%s,%s,%s" % [element.x, element.y, element.z]] = element_to_save
-		
+
 		var element_data := MetSys.map_data.custom_elements[element]
 		element_to_save["name"] = element_data.name
 		element_to_save["size"] = "%s,%s" % [element_data.size.x, element_data.size.y]
 		if not element_data.data.is_empty():
 			element_to_save["data"] = element_data.data
-	
+
 	if not elements.is_empty():
 		map_data["custom_elements"] = elements
-	
+
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(map_data, "\t"))

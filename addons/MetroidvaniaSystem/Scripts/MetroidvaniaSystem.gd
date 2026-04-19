@@ -39,7 +39,7 @@ var current_layer: int:
 	set(layer):
 		if layer == current_layer:
 			return
-		
+
 		current_layer = layer
 		cell_changed.emit(Vector3i(last_player_position.x, last_player_position.y, current_layer))
 
@@ -55,31 +55,31 @@ signal theme_modified(changes: Array[String])
 
 func _enter_tree() -> void:
 	var settings_path := "res://MetSysSettings.tres"
-	
+
 	if ProjectSettings.has_setting("addons/metroidvania_system/settings_file"):
 		settings_path = ProjectSettings.get_setting("addons/metroidvania_system/settings_file")
 	else:
 		ProjectSettings.set_setting("addons/metroidvania_system/settings_file", settings_path)
-	
+
 	ProjectSettings.set_initial_value("addons/metroidvania_system/settings_file", "res://MetSysSettings.tres")
 	ProjectSettings.add_property_info({"name": "addons/metroidvania_system/settings_file", "type": TYPE_STRING, "hint": PROPERTY_HINT_FILE, "hint_string": "*.tres"})
-	
+
 	if ResourceLoader.exists(settings_path):
 		settings = load(settings_path)
 	else:
 		settings = MetSysSettings.new()
-		settings.theme = load("res://addons/MetroidvaniaSystem/Themes/Exquisite/Theme.tres")
+		settings.theme = load("res://addons/MetroidvaniaSystem/Themes/AoS/Theme.tres")
 		ResourceSaver.save(settings, settings_path)
-	
+
 	settings.theme_changed.connect(_update_theme)
 	_update_theme()
-	
+
 	map_data = MapData.new()
 	map_data.load_data()
-	
+
 	if Engine.is_editor_hint():
 		return
-	
+
 	if settings.cache_group_reverse_lookup:
 		map_data.cache_groups()
 
@@ -87,7 +87,7 @@ func _update_theme():
 	CELL_SIZE = settings.theme.center_texture.get_size()
 	map_updated.emit()
 
-## Loads map data from the provided map data file. Can be used to support multiple separate world maps (for custom campaigns etc.). 
+## Loads map data from the provided map data file. Can be used to support multiple separate world maps (for custom campaigns etc.).
 func load_map_data(file: String):
 	settings.map_data_file = file
 	map_data = MapData.new()
@@ -115,10 +115,10 @@ func get_layer_name(idx: int) -> String:
 	if idx < 0:
 		push_error("Layer index can't be negative.")
 		return ""
-	
+
 	if idx >= map_data.layer_names.size():
 		return ""
-	
+
 	return map_data.layer_names[idx]
 
 ## Returns index of a cell group with the given name. Returns [code]-1[/code] and error if group name does not exist.
@@ -133,10 +133,10 @@ func get_group_name(idx: int) -> String:
 	if idx < 0:
 		push_error("Group index can't be negative.")
 		return ""
-	
+
 	if idx >= map_data.group_names.size():
 		return ""
-	
+
 	return map_data.group_names[idx]
 
 ## Returns a [Dictionary] containing the MetSys' runtime data, like discovered cells or stored objects. You need to serialize it yourself, e.g. using [method FileAccess.store_var].
@@ -151,7 +151,7 @@ func set_save_data(data := {}):
 
 func visit_cell(coords: Vector3i):
 	save_data.explore_cell(coords)
-	
+
 	var previous_map := map_data.get_assigned_scene_at(Vector3i(last_player_position.x, last_player_position.y, current_layer))
 	var new_map := map_data.get_assigned_scene_at(coords)
 	if not new_map.is_empty() and not previous_map.is_empty() and new_map != previous_map:
@@ -161,7 +161,7 @@ func visit_cell(coords: Vector3i):
 func is_cell_discovered(coords: Vector3i, include_mapped := true) -> bool:
 	if not save_data:
 		return true
-	
+
 	var discovered := save_data.is_cell_discovered(coords)
 	return discovered == 2 or include_mapped and discovered == 1
 
@@ -169,14 +169,14 @@ func is_cell_discovered(coords: Vector3i, include_mapped := true) -> bool:
 func get_explored_ratio(layer := -1):
 	var all: float
 	var discovered: float
-	
+
 	for coords in map_data.cells:
 		if layer != -1 and coords.z != layer:
 			continue
-		
+
 		all += 1
 		discovered += int(is_cell_discovered(coords, false))
-	
+
 	return discovered / all
 
 ## Sets the position of the player to be tracked by MetSys. Automatically explores cells when crossing cell boundary and emits [signal cell_changed] and [signal room_changed] signals.
@@ -185,7 +185,7 @@ func set_player_position(position: Vector2):
 	exact_player_position = position
 	if not current_room:
 		return
-	
+
 	var player_pos := Vector2i((position / settings.in_game_cell_size).floor()) + current_room.min_cell
 	var player_pos_3d := Vector3i(player_pos.x, player_pos.y, current_layer)
 	if player_pos_3d != last_player_position:
@@ -196,17 +196,17 @@ func set_player_position(position: Vector2):
 ## Discovers (maps) the cell at the given [param coords]. Fails if the cell does not exist.
 func discover_cell(coords: Vector3i):
 	assert(coords in map_data.cells)
-	
+
 	save_data.discover_cell(coords)
 	map_updated.emit()
 
 ## Discovers (maps) all cells that belong to the specified group. The group ID must exist (i.e. have at least a single cell with it assigned).
 func discover_cell_group(group_id: int):
 	assert(group_id in map_data.cell_groups)
-	
+
 	for coords in map_data.cell_groups[group_id]:
 		save_data.discover_cell(coords)
-	
+
 	map_updated.emit()
 
 ## Assigns a custom symbol to the given cell that will override the symbol set in the editor. You can assign any number of symbols and the one with the highest ID will be displayed. [param symbol_id] must be within the symbols defined in [member MapTheme.symbols].
@@ -227,20 +227,20 @@ func register_storable_object_with_marker(object: Object, stored_callback := Cal
 			stored_callback = object.queue_free
 		elif not object is RefCounted:
 			stored_callback = Callable(object, &"free")
-	
+
 	if save_data.is_object_stored(object):
 		stored_callback.call()
 		return true
-	
+
 	if map_marker == DEFAULT_SYMBOL:
 		map_marker = settings.theme.uncollected_item_symbol
 		object.set_meta(&"map_marker", map_marker)
 	elif map_marker > -1:
 		object.set_meta(&"map_marker", map_marker)
-	
+
 	if save_data.register_storable_object(object) and map_marker > -1:
 		save_data.add_custom_marker(get_object_coords(object), map_marker)
-	
+
 	return false
 
 ## Same as [method register_storable_object_with_marker], but doesn't assign any marker. Useful for things like buttons, breakable walls etc.
@@ -255,10 +255,10 @@ func store_object(object: Object, map_marker := DEFAULT_SYMBOL):
 		save_data.remove_custom_marker(get_object_coords(object), object.get_meta(&"map_marker"))
 	else:
 		map_marker = -1
-	
+
 	if map_marker == DEFAULT_SYMBOL:
 		map_marker = settings.theme.collected_item_symbol
-	
+
 	if map_marker > -1:
 		save_data.add_custom_marker(get_object_coords(object), map_marker)
 
@@ -272,14 +272,14 @@ func get_object_id(object: Object) -> StringName:
 	var id: StringName = object.get_meta(&"object_id", StringName())
 	if not id.is_empty():
 		return id
-	
+
 	if object.has_method(&"_get_object_id"):
 		id = object._get_object_id()
 		object.set_meta(&"object_id", id)
 	elif object is Node:
 		id = object.owner.scene_file_path.get_file().get_basename() + "/" + (str(object.get_parent().name) if object.get_parent() != object.owner else ".") + "/" + object.name
 		object.set_meta(&"object_id", id)
-	
+
 	return id
 
 ## Returns the map coordinates of an object on the scene. It can be used e.g. to place custom markers for non-storable objects.
@@ -293,17 +293,17 @@ func get_object_coords(object: Object) -> Vector3i:
 		return coords
 	elif object is Node:
 		var room_name: String = map_data.get_room_from_scene_path(object.owner.scene_file_path)
-		
+
 		var coords: Vector3i = map_data.assigned_scenes[room_name].front()
 		for vec in map_data.assigned_scenes[room_name]:
 			coords.x = mini(coords.x, vec.x)
 			coords.y = mini(coords.y, vec.y)
-		
+
 		if object is CanvasItem:
 			var position: Vector2 = object.position / settings.in_game_cell_size
 			coords.x += int(position.x)
 			coords.y += int(position.y)
-		
+
 		object.set_meta(&"object_coords", coords)
 		return coords
 	return Vector3i.MAX
@@ -312,12 +312,12 @@ func get_object_coords(object: Object) -> Vector3i:
 func get_cell_groups(coords: Vector3i) -> PackedInt32Array:
 	if not map_data.group_cache.is_empty():
 		return map_data.group_cache.get(coords, PackedInt32Array())
-	
+
 	var groups: PackedInt32Array
 	for group in map_data.cell_groups:
 		if coords in map_data.cell_groups[group]:
 			groups.append(group)
-	
+
 	return groups
 
 ## Translates map coordinates to 2D pixel coordinates. Can be used for custom drawing on the map.
@@ -331,7 +331,7 @@ func get_cell_position(coords: Vector2i, relative := Vector2(0.5, 0.5), base_off
 func get_cell_override(coords: Vector3i, auto_create := true) -> MapData.CellOverride:
 	var cell := map_data.get_cell_at(coords)
 	assert(cell, "Can't override non-existent cell")
-	
+
 	var existing := cell.get_override()
 	if existing:
 		return existing

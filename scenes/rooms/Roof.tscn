@@ -1,0 +1,1594 @@
+[gd_scene format=3 uid="uid://di2qiwhnvsppx"]
+
+[ext_resource type="Script" path="res://scenes/rooms/Door.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/objects/CityParallax.tscn" id="3"]
+[ext_resource type="Script" path="res://scenes/rooms/FloorBlocks.gd" id="5"]
+[ext_resource type="Script" path="res://scenes/components/BuildingEnhancer.gd" id="6"]
+[ext_resource type="Script" path="res://scenes/components/FloorHole.gd" id="7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(880, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor_right"]
+size = Vector2(880, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor_center"]
+size = Vector2(240, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(60, 800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(48, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hole"]
+size = Vector2(240, 120)
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform_small"]
+size = Vector2(240, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform_mid"]
+size = Vector2(360, 40)
+
+[node name="Roof" type="Node2D" unique_id=1494201171]
+
+[node name="CityParallax" parent="." unique_id=1297491172 instance=ExtResource("3")]
+
+[node name="RoomInstance" parent="." unique_id=467390513 instance=ExtResource("2")]
+
+[node name="SpawnDefault" type="Marker2D" parent="." unique_id=641864430]
+position = Vector2(-860, 210)
+
+[node name="SpawnFromHole" type="Marker2D" parent="."]
+position = Vector2(-200, 200)
+
+[node name="SpawnFromB" type="Marker2D" parent="."]
+position = Vector2(860, 360)
+
+
+[node name="Geometry" type="Node2D" parent="." unique_id=420014568]
+script = ExtResource("6")
+
+[node name="Floor" type="Node2D" parent="Geometry" unique_id=492188164]
+position = Vector2(0, 420)
+script = ExtResource("5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/Floor" unique_id=1796026326]
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="Geometry/Floor/StaticBody2D" unique_id=1623525901]
+shape = SubResource("RectangleShape2D_floor")
+position = Vector2(-560, 0)
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="Geometry/Floor/StaticBody2D"]
+shape = SubResource("RectangleShape2D_floor_right")
+position = Vector2(560, 0)
+
+[node name="CollisionShapeCenter" type="CollisionShape2D" parent="Geometry/Floor/StaticBody2D"]
+shape = SubResource("RectangleShape2D_floor_center")
+position = Vector2(0, 0)
+
+[node name="RoofLeft" type="Polygon2D" parent="Geometry/Floor" unique_id=1468349194]
+color = Color(0.11, 0.105, 0.1, 1)
+polygon = PackedVector2Array(-1000, -30, -120, -30, -120, 30, -1000, 30)
+
+[node name="RoofRight" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.11, 0.105, 0.1, 1)
+polygon = PackedVector2Array(120, -30, 1000, -30, 1000, 30, 120, 30)
+
+[node name="RoofSurfaceDetailLeft" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.13, 0.125, 0.115, 1)
+polygon = PackedVector2Array(-1000, -28, -120, -28, -120, -18, -1000, -18)
+
+[node name="RoofSurfaceDetailRight" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.13, 0.125, 0.115, 1)
+polygon = PackedVector2Array(120, -28, 1000, -28, 1000, -18, 120, -18)
+
+[node name="RoofGritLeft" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.09, 0.085, 0.08, 0.6)
+polygon = PackedVector2Array(-800, -26, -600, -26, -600, -20, -800, -20)
+
+[node name="RoofGritRight" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.09, 0.085, 0.08, 0.6)
+polygon = PackedVector2Array(300, -26, 550, -26, 550, -20, 300, -20)
+
+[node name="RoofPatchLeft" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.14, 0.13, 0.12, 0.7)
+polygon = PackedVector2Array(-450, -28, -300, -28, -300, -16, -450, -16)
+
+[node name="RoofPatchRight" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.14, 0.13, 0.12, 0.7)
+polygon = PackedVector2Array(600, -28, 800, -28, 800, -16, 600, -16)
+
+[node name="RoofHoleCenter" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.02, 0.02, 0.03, 0.9)
+polygon = PackedVector2Array(-90, -30, 90, -30, 90, 80, -90, 80)
+
+[node name="RoofHoleFadeL1" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.03, 0.03, 0.04, 0.7)
+polygon = PackedVector2Array(-120, -30, -90, -30, -90, 80, -120, 80)
+
+[node name="RoofHoleFadeL2" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.05, 0.05, 0.07, 0.4)
+polygon = PackedVector2Array(-150, -30, -120, -30, -120, 80, -150, 80)
+
+[node name="RoofHoleFadeR1" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.03, 0.03, 0.04, 0.7)
+polygon = PackedVector2Array(90, -30, 120, -30, 120, 80, 90, 80)
+
+[node name="RoofHoleFadeR2" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.05, 0.05, 0.07, 0.4)
+polygon = PackedVector2Array(120, -30, 150, -30, 150, 80, 120, 80)
+
+[node name="GlowFloor" type="Polygon2D" parent="Geometry/Floor" unique_id=2022327589]
+color = Color(0.133333, 0.94902, 0.780392, 0.45)
+polygon = PackedVector2Array(-1000, -32, -120, -32, -120, -6, -1000, -6)
+
+[node name="GlowFloorRight" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.133333, 0.94902, 0.780392, 0.45)
+polygon = PackedVector2Array(120, -32, 1000, -32, 1000, -6, 120, -6)
+
+[node name="GlowFloorSoft" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.133333, 0.94902, 0.780392, 0.12)
+polygon = PackedVector2Array(-1000, -38, -120, -38, -120, -32, -1000, -32)
+
+[node name="GlowFloorSoftRight" type="Polygon2D" parent="Geometry/Floor"]
+color = Color(0.133333, 0.94902, 0.780392, 0.12)
+polygon = PackedVector2Array(120, -38, 1000, -38, 1000, -32, 120, -32)
+
+[node name="UnderFill" type="Polygon2D" parent="Geometry"]
+z_index = -10
+color = Color(0.06, 0.055, 0.05, 1)
+polygon = PackedVector2Array(-2000, 420, 2000, 420, 2000, 5000, -2000, 5000)
+
+[node name="RoofUnderside" type="Polygon2D" parent="Geometry"]
+z_index = -10
+color = Color(0.05, 0.045, 0.04, 1)
+polygon = PackedVector2Array(-2000, 420, 2000, 420, 2000, 450, -2000, 450)
+
+[node name="ForegroundLeft" type="Node2D" parent="Geometry"]
+z_index = 12
+
+[node name="LeftBuildingSilhouette1" type="Polygon2D" parent="Geometry/ForegroundLeft"]
+position = Vector2(-1120, 520)
+color = Color(0.04, 0.04, 0.05, 1)
+polygon = PackedVector2Array(-260, -260, -60, -260, -60, 760, -260, 760)
+
+[node name="LeftBuildingSilhouette2" type="Polygon2D" parent="Geometry/ForegroundLeft"]
+position = Vector2(-1010, 560)
+color = Color(0.05, 0.05, 0.06, 1)
+polygon = PackedVector2Array(-160, -220, 80, -220, 80, 720, -160, 720)
+
+[node name="LeftStreetBand" type="Polygon2D" parent="Geometry/ForegroundLeft"]
+position = Vector2(-1050, 395)
+color = Color(0.08, 0.08, 0.09, 1)
+polygon = PackedVector2Array(-380, -18, 380, -18, 380, 18, -380, 18)
+
+[node name="BuildingFacade" type="Node2D" parent="Geometry"]
+z_index = -10
+
+[node name="BrickBase" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.09, 0.08, 0.07, 1)
+polygon = PackedVector2Array(-1000, 450, 1000, 450, 1000, 1650, -1000, 1650)
+
+[node name="BrickBandDark1" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.07, 0.065, 0.055, 1)
+polygon = PackedVector2Array(-1000, 450, 1000, 450, 1000, 460, -1000, 460)
+
+[node name="BrickBandLight1" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.11, 0.1, 0.085, 1)
+polygon = PackedVector2Array(-1000, 460, 1000, 460, 1000, 466, -1000, 466)
+
+[node name="MortarLine1" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.13, 0.12, 0.1, 0.5)
+polygon = PackedVector2Array(-1000, 530, 1000, 530, 1000, 532, -1000, 532)
+
+[node name="MortarLine2" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.13, 0.12, 0.1, 0.5)
+polygon = PackedVector2Array(-1000, 600, 1000, 600, 1000, 602, -1000, 602)
+
+[node name="MortarLine3" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.13, 0.12, 0.1, 0.5)
+polygon = PackedVector2Array(-1000, 670, 1000, 670, 1000, 672, -1000, 672)
+
+[node name="MortarLine4" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.13, 0.12, 0.1, 0.5)
+polygon = PackedVector2Array(-1000, 740, 1000, 740, 1000, 742, -1000, 742)
+
+[node name="MortarLine5" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.13, 0.12, 0.1, 0.5)
+polygon = PackedVector2Array(-1000, 810, 1000, 810, 1000, 812, -1000, 812)
+
+[node name="MortarLine6" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.13, 0.12, 0.1, 0.5)
+polygon = PackedVector2Array(-1000, 880, 1000, 880, 1000, 882, -1000, 882)
+
+[node name="BrickStain1" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.1, 0.09, 0.08, 0.4)
+polygon = PackedVector2Array(-700, 460, -550, 460, -540, 600, -710, 600)
+
+[node name="BrickStain2" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.1, 0.09, 0.08, 0.3)
+polygon = PackedVector2Array(200, 460, 380, 460, 390, 560, 190, 560)
+
+[node name="BrickStain3" type="Polygon2D" parent="Geometry/BuildingFacade"]
+color = Color(0.11, 0.1, 0.085, 0.35)
+polygon = PackedVector2Array(600, 600, 800, 600, 810, 780, 590, 780)
+
+[node name="BuildingColumns" type="Node2D" parent="Geometry"]
+z_index = -9
+
+[node name="Column1" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(-750, 450)
+color = Color(0.1, 0.095, 0.085, 1)
+polygon = PackedVector2Array(-12, 0, 12, 0, 12, 1200, -12, 1200)
+
+[node name="Column2" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(-500, 450)
+color = Color(0.1, 0.095, 0.085, 1)
+polygon = PackedVector2Array(-12, 0, 12, 0, 12, 1200, -12, 1200)
+
+[node name="Column3" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(-250, 450)
+color = Color(0.1, 0.095, 0.085, 1)
+polygon = PackedVector2Array(-12, 0, 12, 0, 12, 1200, -12, 1200)
+
+[node name="Column4" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(0, 450)
+color = Color(0.1, 0.095, 0.085, 1)
+polygon = PackedVector2Array(-12, 0, 12, 0, 12, 1200, -12, 1200)
+
+[node name="Column5" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(250, 450)
+color = Color(0.1, 0.095, 0.085, 1)
+polygon = PackedVector2Array(-12, 0, 12, 0, 12, 1200, -12, 1200)
+
+[node name="Column6" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(500, 450)
+color = Color(0.1, 0.095, 0.085, 1)
+polygon = PackedVector2Array(-12, 0, 12, 0, 12, 1200, -12, 1200)
+
+[node name="Column7" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(750, 450)
+color = Color(0.1, 0.095, 0.085, 1)
+polygon = PackedVector2Array(-12, 0, 12, 0, 12, 1200, -12, 1200)
+
+[node name="FloorBand1" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(0, 620)
+color = Color(0.18, 0.16, 0.14, 0.9)
+polygon = PackedVector2Array(-1000, -8, 1000, -8, 1000, 8, -1000, 8)
+
+[node name="FloorBand1Shadow" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(0, 636)
+color = Color(0.08, 0.07, 0.06, 0.4)
+polygon = PackedVector2Array(-1000, -4, 1000, -4, 1000, 4, -1000, 4)
+
+[node name="FloorBand2" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(0, 820)
+color = Color(0.18, 0.16, 0.14, 0.9)
+polygon = PackedVector2Array(-1000, -8, 1000, -8, 1000, 8, -1000, 8)
+
+[node name="FloorBand2Shadow" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(0, 836)
+color = Color(0.08, 0.07, 0.06, 0.4)
+polygon = PackedVector2Array(-1000, -4, 1000, -4, 1000, 4, -1000, 4)
+
+[node name="FloorBand3" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(0, 1020)
+color = Color(0.18, 0.16, 0.14, 0.9)
+polygon = PackedVector2Array(-1000, -8, 1000, -8, 1000, 8, -1000, 8)
+
+[node name="FloorBand3Shadow" type="Polygon2D" parent="Geometry/BuildingColumns"]
+position = Vector2(0, 1036)
+color = Color(0.08, 0.07, 0.06, 0.4)
+polygon = PackedVector2Array(-1000, -4, 1000, -4, 1000, 4, -1000, 4)
+
+[node name="BuildingWindows" type="Node2D" parent="Geometry"]
+z_index = -9
+
+[node name="W1Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.03, 0.03, 0.04, 0.9)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W1Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W1Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W1Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.12, 0.09, 0.06, 0.92)
+polygon = PackedVector2Array(-46, -14, 46, -18, 46, -2, -46, 2)
+[node name="W1Board2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.1, 0.08, 0.05, 0.88)
+polygon = PackedVector2Array(-44, 8, 44, 5, 44, 21, -44, 24)
+[node name="W1Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-36, -9, -33, -9, -33, -6, -36, -6)
+[node name="W1Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(34, -11, 37, -11, 37, -8, 34, -8)
+[node name="W1Nail3" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-30, 13, -27, 13, -27, 16, -30, 16)
+[node name="W1Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.2, 0.1, 0.05, 0.35)
+polygon = PackedVector2Array(-37, -6, -32, -6, -33, 8, -36, 8)
+[node name="W1Rust2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.18, 0.09, 0.04, 0.3)
+polygon = PackedVector2Array(33, -8, 38, -8, 37, 4, 34, 4)
+[node name="W1Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.06, 0.15, 0.08, 0.5)
+polygon = PackedVector2Array(-50, 30, -40, 28, -38, 38, -52, 38)
+[node name="W1Vine" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 540)
+color = Color(0.04, 0.14, 0.06, 0.7)
+polygon = PackedVector2Array(-46, -35, -43, -35, -40, 10, -48, 38, -50, 38, -44, 10)
+
+[node name="W2Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.03, 0.03, 0.04, 0.9)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W2Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W2Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W2Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.11, 0.09, 0.06, 0.92)
+polygon = PackedVector2Array(-46, -30, 44, -32, 46, -16, -44, -14)
+[node name="W2Board2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.09, 0.07, 0.05, 0.88)
+polygon = PackedVector2Array(-46, -4, 46, -7, 46, 9, -46, 12)
+[node name="W2Board3" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.1, 0.08, 0.06, 0.85)
+polygon = PackedVector2Array(-42, 18, 44, 15, 44, 30, -42, 32)
+[node name="W2Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-38, -24, -35, -24, -35, -21, -38, -21)
+[node name="W2Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(36, -1, 39, -1, 39, 2, 36, 2)
+[node name="W2Nail3" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-34, 22, -31, 22, -31, 25, -34, 25)
+[node name="W2Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.22, 0.1, 0.04, 0.3)
+polygon = PackedVector2Array(-39, -21, -34, -21, -35, -8, -38, -8)
+[node name="W2Rust2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.18, 0.08, 0.03, 0.25)
+polygon = PackedVector2Array(35, 2, 40, 2, 39, 14, 36, 14)
+[node name="W2Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 540)
+color = Color(0.05, 0.14, 0.07, 0.45)
+polygon = PackedVector2Array(38, 32, 48, 30, 52, 38, 40, 38)
+
+[node name="W3Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 540)
+color = Color(0.02, 0.02, 0.03, 0.95)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W3Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 540)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W3Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 540)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W3Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 540)
+color = Color(0.11, 0.08, 0.05, 0.9)
+polygon = PackedVector2Array(-46, -8, 46, -12, 46, 4, -46, 8)
+[node name="W3Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-38, -4, -35, -4, -35, -1, -38, -1)
+[node name="W3Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(36, -6, 39, -6, 39, -3, 36, -3)
+[node name="W3Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 540)
+color = Color(0.2, 0.1, 0.05, 0.3)
+polygon = PackedVector2Array(-39, -1, -34, -1, -35, 12, -38, 12)
+[node name="W3Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 540)
+color = Color(0.05, 0.16, 0.07, 0.5)
+polygon = PackedVector2Array(-52, -35, -42, -35, -44, -28, -50, -28)
+[node name="W3Moss2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 540)
+color = Color(0.04, 0.12, 0.06, 0.4)
+polygon = PackedVector2Array(40, 30, 52, 28, 52, 38, 38, 38)
+[node name="W3Vine1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 540)
+color = Color(0.05, 0.16, 0.07, 0.75)
+polygon = PackedVector2Array(20, -35, 23, -35, 28, 0, 22, 38, 19, 38, 24, 0)
+
+[node name="W4Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.03, 0.03, 0.04, 0.9)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W4Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W4Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W4Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.12, 0.09, 0.06, 0.92)
+polygon = PackedVector2Array(-46, -28, 46, -30, 46, -14, -46, -12)
+[node name="W4Board2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.1, 0.08, 0.05, 0.88)
+polygon = PackedVector2Array(-44, -2, 44, -5, 44, 11, -44, 14)
+[node name="W4Board3" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.11, 0.09, 0.07, 0.85)
+polygon = PackedVector2Array(-42, 18, 42, 15, 42, 30, -42, 32)
+[node name="W4Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-38, -22, -35, -22, -35, -19, -38, -19)
+[node name="W4Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(36, 2, 39, 2, 39, 5, 36, 5)
+[node name="W4Nail3" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-32, 22, -29, 22, -29, 25, -32, 25)
+[node name="W4Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.2, 0.1, 0.04, 0.35)
+polygon = PackedVector2Array(-39, -19, -34, -19, -35, -4, -38, -4)
+[node name="W4Rust2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.18, 0.09, 0.04, 0.25)
+polygon = PackedVector2Array(-33, 25, -28, 25, -29, 36, -32, 36)
+[node name="W4Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 540)
+color = Color(0.05, 0.14, 0.07, 0.45)
+polygon = PackedVector2Array(-52, 32, -44, 30, -42, 38, -52, 38)
+
+[node name="W5Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 540)
+color = Color(0.03, 0.03, 0.04, 0.85)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W5Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 540)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W5Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 540)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W5Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 540)
+color = Color(0.1, 0.08, 0.06, 0.9)
+polygon = PackedVector2Array(-46, -16, 44, -19, 44, -3, -46, 0)
+[node name="W5Board2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 540)
+color = Color(0.11, 0.09, 0.06, 0.85)
+polygon = PackedVector2Array(-44, 10, 46, 7, 46, 22, -44, 25)
+[node name="W5Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-38, -10, -35, -10, -35, -7, -38, -7)
+[node name="W5Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(36, 12, 39, 12, 39, 15, 36, 15)
+[node name="W5Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 540)
+color = Color(0.2, 0.1, 0.05, 0.3)
+polygon = PackedVector2Array(-39, -7, -34, -7, -35, 6, -38, 6)
+[node name="W5Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 540)
+color = Color(0.04, 0.13, 0.06, 0.5)
+polygon = PackedVector2Array(42, -35, 50, -35, 48, -26, 40, -28)
+[node name="W5Vine" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 540)
+color = Color(0.04, 0.13, 0.06, 0.7)
+polygon = PackedVector2Array(40, -35, 43, -35, 46, 5, 42, 38, 39, 38, 43, 5)
+
+[node name="W6Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 540)
+color = Color(0.03, 0.03, 0.04, 0.9)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W6Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 540)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W6Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 540)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W6Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 540)
+color = Color(0.1, 0.08, 0.05, 0.92)
+polygon = PackedVector2Array(-46, -24, 46, -27, 46, -11, -46, -8)
+[node name="W6Board2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 540)
+color = Color(0.12, 0.09, 0.06, 0.88)
+polygon = PackedVector2Array(-44, 2, 44, -1, 44, 15, -44, 18)
+[node name="W6Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-36, -18, -33, -18, -33, -15, -36, -15)
+[node name="W6Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(34, 6, 37, 6, 37, 9, 34, 9)
+[node name="W6Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 540)
+color = Color(0.22, 0.1, 0.04, 0.35)
+polygon = PackedVector2Array(-37, -15, -32, -15, -33, 0, -36, 0)
+[node name="W6Rust2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 540)
+color = Color(0.18, 0.09, 0.04, 0.25)
+polygon = PackedVector2Array(33, 9, 38, 9, 37, 20, 34, 20)
+[node name="W6Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 540)
+color = Color(0.05, 0.15, 0.07, 0.45)
+polygon = PackedVector2Array(-52, 30, -42, 28, -40, 38, -52, 38)
+
+[node name="W7Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 540)
+color = Color(0.02, 0.02, 0.03, 0.95)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W7Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 540)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W7Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 540)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W7Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 540)
+color = Color(0.11, 0.08, 0.05, 0.9)
+polygon = PackedVector2Array(-46, -6, 46, -10, 46, 6, -46, 10)
+[node name="W7Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-38, -2, -35, -2, -35, 1, -38, 1)
+[node name="W7Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 540)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(36, -4, 39, -4, 39, -1, 36, -1)
+[node name="W7Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 540)
+color = Color(0.2, 0.1, 0.05, 0.3)
+polygon = PackedVector2Array(-39, 1, -34, 1, -35, 14, -38, 14)
+[node name="W7Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 540)
+color = Color(0.05, 0.15, 0.07, 0.5)
+polygon = PackedVector2Array(-50, -35, -40, -35, -42, -26, -48, -28)
+[node name="W7Moss2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 540)
+color = Color(0.04, 0.12, 0.06, 0.4)
+polygon = PackedVector2Array(44, 30, 52, 28, 52, 38, 42, 38)
+[node name="W7Vine1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 540)
+color = Color(0.05, 0.15, 0.07, 0.7)
+polygon = PackedVector2Array(-10, -35, -7, -35, -4, 20, -8, 38, -11, 38, -7, 20)
+
+[node name="W8Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 730)
+color = Color(0.03, 0.03, 0.04, 0.9)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W8Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 730)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W8Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 730)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W8Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 730)
+color = Color(0.12, 0.09, 0.06, 0.92)
+polygon = PackedVector2Array(-46, -28, 46, -30, 46, -14, -46, -12)
+[node name="W8Board2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 730)
+color = Color(0.1, 0.08, 0.05, 0.88)
+polygon = PackedVector2Array(-44, -2, 44, -5, 44, 11, -44, 14)
+[node name="W8Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-38, -22, -35, -22, -35, -19, -38, -19)
+[node name="W8Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(36, 2, 39, 2, 39, 5, 36, 5)
+[node name="W8Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 730)
+color = Color(0.2, 0.1, 0.05, 0.35)
+polygon = PackedVector2Array(-39, -19, -34, -19, -35, -4, -38, -4)
+[node name="W8Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-750, 730)
+color = Color(0.06, 0.15, 0.08, 0.5)
+polygon = PackedVector2Array(40, 32, 52, 30, 52, 38, 38, 38)
+
+[node name="W9Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 730)
+color = Color(0.02, 0.02, 0.03, 0.95)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W9Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 730)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W9Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 730)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W9Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 730)
+color = Color(0.11, 0.08, 0.05, 0.9)
+polygon = PackedVector2Array(-46, -10, 46, -14, 46, 2, -46, 6)
+[node name="W9Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-36, -5, -33, -5, -33, -2, -36, -2)
+[node name="W9Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(34, -8, 37, -8, 37, -5, 34, -5)
+[node name="W9Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 730)
+color = Color(0.2, 0.1, 0.05, 0.3)
+polygon = PackedVector2Array(-37, -2, -32, -2, -33, 10, -36, 10)
+[node name="W9Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 730)
+color = Color(0.05, 0.14, 0.07, 0.5)
+polygon = PackedVector2Array(-52, -35, -42, -35, -44, -26, -50, -28)
+[node name="W9Vine" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-500, 730)
+color = Color(0.04, 0.14, 0.06, 0.7)
+polygon = PackedVector2Array(-15, -35, -12, -35, -8, 15, -14, 38, -17, 38, -11, 15)
+
+[node name="W10Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 730)
+color = Color(0.03, 0.03, 0.04, 0.9)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W10Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 730)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W10Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 730)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W10Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 730)
+color = Color(0.12, 0.09, 0.06, 0.92)
+polygon = PackedVector2Array(-46, -18, 46, -21, 46, -5, -46, -2)
+[node name="W10Board2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 730)
+color = Color(0.1, 0.08, 0.05, 0.88)
+polygon = PackedVector2Array(-44, 8, 44, 5, 44, 21, -44, 24)
+[node name="W10Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-38, -12, -35, -12, -35, -9, -38, -9)
+[node name="W10Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(36, 11, 39, 11, 39, 14, 36, 14)
+[node name="W10Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 730)
+color = Color(0.2, 0.1, 0.05, 0.3)
+polygon = PackedVector2Array(-39, -9, -34, -9, -35, 4, -38, 4)
+[node name="W10Rust2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 730)
+color = Color(0.18, 0.09, 0.04, 0.25)
+polygon = PackedVector2Array(35, 14, 40, 14, 39, 26, 36, 26)
+[node name="W10Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(-250, 730)
+color = Color(0.05, 0.14, 0.07, 0.45)
+polygon = PackedVector2Array(-52, 30, -44, 28, -42, 38, -52, 38)
+
+[node name="W11Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 730)
+color = Color(0.03, 0.03, 0.04, 0.9)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W11Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 730)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W11Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 730)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W11Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 730)
+color = Color(0.11, 0.09, 0.06, 0.9)
+polygon = PackedVector2Array(-46, 8, 46, 5, 46, 21, -46, 24)
+[node name="W11Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-38, 12, -35, 12, -35, 15, -38, 15)
+[node name="W11Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(36, 10, 39, 10, 39, 13, 36, 13)
+[node name="W11Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 730)
+color = Color(0.2, 0.1, 0.05, 0.3)
+polygon = PackedVector2Array(-39, 15, -34, 15, -35, 28, -38, 28)
+[node name="W11Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 730)
+color = Color(0.05, 0.15, 0.07, 0.5)
+polygon = PackedVector2Array(42, -35, 52, -35, 50, -26, 40, -28)
+[node name="W11Vine1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(0, 730)
+color = Color(0.05, 0.15, 0.07, 0.7)
+polygon = PackedVector2Array(-35, -35, -32, -35, -28, 5, -34, 38, -37, 38, -31, 5)
+
+[node name="W12Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.02, 0.02, 0.03, 0.95)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W12Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W12Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W12Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.12, 0.09, 0.06, 0.92)
+polygon = PackedVector2Array(-46, -30, 46, -32, 46, -16, -46, -14)
+[node name="W12Board2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.1, 0.08, 0.05, 0.88)
+polygon = PackedVector2Array(-44, -4, 44, -7, 44, 9, -44, 12)
+[node name="W12Board3" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.11, 0.09, 0.07, 0.85)
+polygon = PackedVector2Array(-42, 18, 44, 15, 44, 30, -42, 32)
+[node name="W12Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-38, -24, -35, -24, -35, -21, -38, -21)
+[node name="W12Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(36, 0, 39, 0, 39, 3, 36, 3)
+[node name="W12Nail3" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-32, 22, -29, 22, -29, 25, -32, 25)
+[node name="W12Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.22, 0.1, 0.04, 0.35)
+polygon = PackedVector2Array(-39, -21, -34, -21, -35, -8, -38, -8)
+[node name="W12Rust2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.18, 0.09, 0.04, 0.25)
+polygon = PackedVector2Array(-33, 25, -28, 25, -29, 36, -32, 36)
+[node name="W12Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(250, 730)
+color = Color(0.06, 0.15, 0.08, 0.5)
+polygon = PackedVector2Array(-52, 32, -44, 30, -42, 38, -52, 38)
+
+[node name="W13Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 730)
+color = Color(0.03, 0.03, 0.04, 0.9)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W13Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 730)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W13Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 730)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W13Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 730)
+color = Color(0.1, 0.08, 0.06, 0.92)
+polygon = PackedVector2Array(-46, -14, 46, -17, 46, -1, -46, 2)
+[node name="W13Board2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 730)
+color = Color(0.11, 0.09, 0.06, 0.85)
+polygon = PackedVector2Array(-44, 12, 44, 9, 44, 25, -44, 28)
+[node name="W13Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-38, -8, -35, -8, -35, -5, -38, -5)
+[node name="W13Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(36, 16, 39, 16, 39, 19, 36, 19)
+[node name="W13Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 730)
+color = Color(0.2, 0.1, 0.05, 0.3)
+polygon = PackedVector2Array(-39, -5, -34, -5, -35, 8, -38, 8)
+[node name="W13Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 730)
+color = Color(0.04, 0.13, 0.06, 0.45)
+polygon = PackedVector2Array(42, 30, 52, 28, 52, 38, 40, 38)
+[node name="W13Vine" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(500, 730)
+color = Color(0.04, 0.13, 0.06, 0.65)
+polygon = PackedVector2Array(35, -35, 38, -35, 42, 8, 36, 38, 33, 38, 39, 8)
+
+[node name="W14Dark" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 730)
+color = Color(0.03, 0.03, 0.04, 0.9)
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 32, -45, 32)
+[node name="W14Frame" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 730)
+color = Color(0.06, 0.06, 0.07, 1)
+polygon = PackedVector2Array(-48, -35, 48, -35, 48, -32, -48, -32, -48, 32, 48, 32, 48, 35, -48, 35, -48, -35, -45, -35, -45, 35, -48, 35, 45, -35, 48, -35, 48, 35, 45, 35)
+[node name="W14Sill" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 730)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-52, 32, 52, 32, 52, 38, -52, 38)
+[node name="W14Board1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 730)
+color = Color(0.1, 0.08, 0.05, 0.92)
+polygon = PackedVector2Array(-46, -26, 46, -28, 46, -12, -46, -10)
+[node name="W14Board2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 730)
+color = Color(0.12, 0.09, 0.06, 0.88)
+polygon = PackedVector2Array(-44, 2, 44, -1, 44, 15, -44, 18)
+[node name="W14Nail1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(-36, -20, -33, -20, -33, -17, -36, -17)
+[node name="W14Nail2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 730)
+color = Color(0.04, 0.04, 0.04, 1)
+polygon = PackedVector2Array(34, 6, 37, 6, 37, 9, 34, 9)
+[node name="W14Rust1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 730)
+color = Color(0.22, 0.1, 0.04, 0.35)
+polygon = PackedVector2Array(-37, -17, -32, -17, -33, -2, -36, -2)
+[node name="W14Rust2" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 730)
+color = Color(0.18, 0.09, 0.04, 0.25)
+polygon = PackedVector2Array(33, 9, 38, 9, 37, 22, 34, 22)
+[node name="W14Moss1" type="Polygon2D" parent="Geometry/BuildingWindows"]
+position = Vector2(750, 730)
+color = Color(0.05, 0.15, 0.07, 0.5)
+polygon = PackedVector2Array(-52, -35, -42, -35, -44, -26, -50, -28)
+
+[node name="BuildingTopSlab" type="Polygon2D" parent="Geometry"]
+position = Vector2(0, 390)
+color = Color(0.1, 0.09, 0.08, 1)
+polygon = PackedVector2Array(-1000, -10, 1000, -10, 1000, 30, -1000, 30)
+
+[node name="BuildingTopSlabCap" type="Polygon2D" parent="Geometry"]
+position = Vector2(0, 380)
+color = Color(0.13, 0.12, 0.1, 1)
+polygon = PackedVector2Array(-1005, -6, 1005, -6, 1005, 6, -1005, 6)
+
+[node name="BuildingTopSlabShadow" type="Polygon2D" parent="Geometry"]
+position = Vector2(0, 390)
+color = Color(0.08, 0.07, 0.06, 0.5)
+polygon = PackedVector2Array(-1000, 30, 1000, 30, 1000, 44, -1000, 44)
+
+[node name="BuildingTopSlabHighlight" type="Polygon2D" parent="Geometry"]
+position = Vector2(0, 374)
+color = Color(0.35, 0.32, 0.27, 1)
+polygon = PackedVector2Array(-1005, -2, 1005, -2, 1005, 2, -1005, 2)
+
+[node name="Parapet" type="Node2D" parent="Geometry"]
+z_index = 10
+z_as_relative = false
+
+[node name="ParapetWallFront" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.2, 0.19, 0.17, 1)
+polygon = PackedVector2Array(-1000, 354, 1000, 354, 1000, 392, -1000, 392)
+
+[node name="ParapetCapTop" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.28, 0.26, 0.22, 1)
+polygon = PackedVector2Array(-1005, 348, 1005, 348, 1005, 356, -1005, 356)
+
+[node name="ParapetCapHighlight" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.35, 0.33, 0.28, 1)
+polygon = PackedVector2Array(-1005, 348, 1005, 348, 1005, 351, -1005, 351)
+
+[node name="ParapetInnerShadow" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.1, 0.095, 0.085, 0.6)
+polygon = PackedVector2Array(-1000, 356, 1000, 356, 1000, 366, -1000, 366)
+
+[node name="ParapetWeatherStain1" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.14, 0.13, 0.11, 0.5)
+polygon = PackedVector2Array(-600, 356, -520, 356, -520, 392, -600, 392)
+
+[node name="ParapetWeatherStain2" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.14, 0.13, 0.11, 0.4)
+polygon = PackedVector2Array(100, 356, 200, 356, 200, 385, 100, 385)
+
+[node name="ParapetWeatherStain3" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.14, 0.13, 0.11, 0.45)
+polygon = PackedVector2Array(500, 360, 620, 360, 620, 392, 500, 392)
+
+[node name="ParapetPost1" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(-1000, 340, -984, 340, -984, 392, -1000, 392)
+
+[node name="ParapetPost2" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(-800, 340, -784, 340, -784, 392, -800, 392)
+
+[node name="ParapetPost3" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(-600, 340, -584, 340, -584, 392, -600, 392)
+
+[node name="ParapetPost4" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(-400, 340, -384, 340, -384, 392, -400, 392)
+
+[node name="ParapetPost5" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(-200, 340, -184, 340, -184, 392, -200, 392)
+
+[node name="ParapetPost6" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(0, 340, 16, 340, 16, 392, 0, 392)
+
+[node name="ParapetPost7" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(200, 340, 216, 340, 216, 392, 200, 392)
+
+[node name="ParapetPost8" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(400, 340, 416, 340, 416, 392, 400, 392)
+
+[node name="ParapetPost9" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(600, 340, 616, 340, 616, 392, 600, 392)
+
+[node name="ParapetPost10" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(800, 340, 816, 340, 816, 392, 800, 392)
+
+[node name="ParapetPost11" type="Polygon2D" parent="Geometry/Parapet"]
+color = Color(0.24, 0.22, 0.19, 1)
+polygon = PackedVector2Array(984, 340, 1000, 340, 1000, 392, 984, 392)
+
+[node name="RoofProps" type="Node2D" parent="Geometry"]
+z_index = 8
+
+[node name="HVACUnit1" type="Node2D" parent="Geometry/RoofProps"]
+position = Vector2(-600, 390)
+
+[node name="HVACBase" type="Polygon2D" parent="Geometry/RoofProps/HVACUnit1"]
+color = Color(0.15, 0.16, 0.2, 1)
+polygon = PackedVector2Array(-40, -50, 40, -50, 40, 0, -40, 0)
+
+[node name="HVACTop" type="Polygon2D" parent="Geometry/RoofProps/HVACUnit1"]
+color = Color(0.18, 0.19, 0.24, 1)
+polygon = PackedVector2Array(-44, -56, 44, -56, 44, -50, -44, -50)
+
+[node name="HVACVent" type="Polygon2D" parent="Geometry/RoofProps/HVACUnit1"]
+color = Color(0.08, 0.08, 0.1, 1)
+polygon = PackedVector2Array(-30, -46, 30, -46, 30, -42, -30, -42, -30, -36, 30, -36, 30, -32, -30, -32, -30, -26, 30, -26, 30, -22, -30, -22)
+
+[node name="HVACShadow" type="Polygon2D" parent="Geometry/RoofProps/HVACUnit1"]
+color = Color(0.0, 0.0, 0.0, 0.2)
+polygon = PackedVector2Array(40, -50, 80, 0, 40, 0)
+
+[node name="HVACUnit2" type="Node2D" parent="Geometry/RoofProps"]
+position = Vector2(-480, 390)
+
+[node name="HVACBase" type="Polygon2D" parent="Geometry/RoofProps/HVACUnit2"]
+color = Color(0.14, 0.15, 0.19, 1)
+polygon = PackedVector2Array(-35, -42, 35, -42, 35, 0, -35, 0)
+
+[node name="HVACTop" type="Polygon2D" parent="Geometry/RoofProps/HVACUnit2"]
+color = Color(0.17, 0.18, 0.22, 1)
+polygon = PackedVector2Array(-38, -48, 38, -48, 38, -42, -38, -42)
+
+[node name="HVACVent" type="Polygon2D" parent="Geometry/RoofProps/HVACUnit2"]
+color = Color(0.08, 0.08, 0.1, 1)
+polygon = PackedVector2Array(-26, -38, 26, -38, 26, -34, -26, -34, -26, -28, 26, -28, 26, -24, -26, -24)
+
+[node name="PipeRun1" type="Node2D" parent="Geometry/RoofProps"]
+position = Vector2(-540, 390)
+
+[node name="PipeH" type="Polygon2D" parent="Geometry/RoofProps/PipeRun1"]
+color = Color(0.14, 0.14, 0.16, 1)
+polygon = PackedVector2Array(-80, -16, 80, -16, 80, -10, -80, -10)
+
+[node name="PipeHighlight" type="Polygon2D" parent="Geometry/RoofProps/PipeRun1"]
+color = Color(0.2, 0.2, 0.24, 1)
+polygon = PackedVector2Array(-80, -16, 80, -16, 80, -14, -80, -14)
+
+[node name="PipeSupport1" type="Polygon2D" parent="Geometry/RoofProps/PipeRun1"]
+color = Color(0.12, 0.12, 0.14, 1)
+polygon = PackedVector2Array(-50, -10, -44, -10, -44, 0, -50, 0)
+
+[node name="PipeSupport2" type="Polygon2D" parent="Geometry/RoofProps/PipeRun1"]
+color = Color(0.12, 0.12, 0.14, 1)
+polygon = PackedVector2Array(44, -10, 50, -10, 50, 0, 44, 0)
+
+[node name="WaterTower" type="Node2D" parent="Geometry/RoofProps"]
+position = Vector2(400, 390)
+
+[node name="TowerLeg1" type="Polygon2D" parent="Geometry/RoofProps/WaterTower"]
+color = Color(0.12, 0.12, 0.14, 1)
+polygon = PackedVector2Array(-30, -60, -24, -60, -18, 0, -24, 0)
+
+[node name="TowerLeg2" type="Polygon2D" parent="Geometry/RoofProps/WaterTower"]
+color = Color(0.12, 0.12, 0.14, 1)
+polygon = PackedVector2Array(24, -60, 30, -60, 24, 0, 18, 0)
+
+[node name="TowerCrossbar" type="Polygon2D" parent="Geometry/RoofProps/WaterTower"]
+color = Color(0.11, 0.11, 0.13, 1)
+polygon = PackedVector2Array(-26, -30, 26, -30, 26, -26, -26, -26)
+
+[node name="TowerTank" type="Polygon2D" parent="Geometry/RoofProps/WaterTower"]
+color = Color(0.16, 0.15, 0.13, 1)
+polygon = PackedVector2Array(-34, -110, 34, -110, 38, -60, -38, -60)
+
+[node name="TowerTankBand1" type="Polygon2D" parent="Geometry/RoofProps/WaterTower"]
+color = Color(0.12, 0.11, 0.1, 1)
+polygon = PackedVector2Array(-35, -100, 35, -100, 35, -96, -35, -96)
+
+[node name="TowerTankBand2" type="Polygon2D" parent="Geometry/RoofProps/WaterTower"]
+color = Color(0.12, 0.11, 0.1, 1)
+polygon = PackedVector2Array(-37, -72, 37, -72, 37, -68, -37, -68)
+
+[node name="TowerRoof" type="Polygon2D" parent="Geometry/RoofProps/WaterTower"]
+color = Color(0.13, 0.13, 0.15, 1)
+polygon = PackedVector2Array(-38, -116, 38, -116, 34, -110, -34, -110)
+
+[node name="TowerRoofPeak" type="Polygon2D" parent="Geometry/RoofProps/WaterTower"]
+color = Color(0.15, 0.15, 0.17, 1)
+polygon = PackedVector2Array(-6, -126, 6, -126, 38, -116, -38, -116)
+
+[node name="TowerShadow" type="Polygon2D" parent="Geometry/RoofProps/WaterTower"]
+color = Color(0.0, 0.0, 0.0, 0.15)
+polygon = PackedVector2Array(38, -60, 80, 0, 30, 0)
+
+[node name="SmallVent1" type="Polygon2D" parent="Geometry/RoofProps"]
+color = Color(0.13, 0.14, 0.18, 1)
+polygon = PackedVector2Array(-200, 360, -170, 360, -170, 390, -200, 390)
+
+[node name="SmallVent1Cap" type="Polygon2D" parent="Geometry/RoofProps"]
+color = Color(0.16, 0.17, 0.22, 1)
+polygon = PackedVector2Array(-206, 354, -164, 354, -164, 362, -206, 362)
+
+[node name="SmallVent2" type="Polygon2D" parent="Geometry/RoofProps"]
+color = Color(0.13, 0.14, 0.18, 1)
+polygon = PackedVector2Array(140, 365, 165, 365, 165, 390, 140, 390)
+
+[node name="SmallVent2Cap" type="Polygon2D" parent="Geometry/RoofProps"]
+color = Color(0.16, 0.17, 0.22, 1)
+polygon = PackedVector2Array(135, 360, 170, 360, 170, 367, 135, 367)
+
+[node name="PipeRun2" type="Node2D" parent="Geometry/RoofProps"]
+position = Vector2(200, 390)
+
+[node name="PipeV" type="Polygon2D" parent="Geometry/RoofProps/PipeRun2"]
+color = Color(0.14, 0.14, 0.16, 1)
+polygon = PackedVector2Array(-4, -70, 4, -70, 4, 0, -4, 0)
+
+[node name="PipeElbow" type="Polygon2D" parent="Geometry/RoofProps/PipeRun2"]
+color = Color(0.14, 0.14, 0.16, 1)
+polygon = PackedVector2Array(-4, -74, 60, -74, 60, -66, -4, -66)
+
+[node name="PipeVHighlight" type="Polygon2D" parent="Geometry/RoofProps/PipeRun2"]
+color = Color(0.2, 0.2, 0.24, 1)
+polygon = PackedVector2Array(-4, -70, -1, -70, -1, 0, -4, 0)
+
+[node name="RoofPuddle1" type="Polygon2D" parent="Geometry/RoofProps"]
+color = Color(0.08, 0.12, 0.18, 0.3)
+polygon = PackedVector2Array(-350, 386, -280, 386, -270, 392, -360, 392)
+
+[node name="RoofPuddle2" type="Polygon2D" parent="Geometry/RoofProps"]
+color = Color(0.08, 0.12, 0.18, 0.25)
+polygon = PackedVector2Array(50, 388, 120, 388, 125, 392, 45, 392)
+
+[node name="RoofPuddleGlow1" type="Polygon2D" parent="Geometry/RoofProps"]
+color = Color(0.133333, 0.94902, 0.780392, 0.08)
+polygon = PackedVector2Array(-350, 384, -280, 384, -270, 392, -360, 392)
+
+[node name="RoofAntenna" type="Node2D" parent="Geometry"]
+z_index = 9
+position = Vector2(-760, 240)
+
+[node name="Mast" type="Polygon2D" parent="Geometry/RoofAntenna"]
+color = Color(0.16, 0.16, 0.18, 1)
+polygon = PackedVector2Array(-4, 0, 4, 0, 4, 150, -4, 150)
+
+[node name="MastHighlight" type="Polygon2D" parent="Geometry/RoofAntenna"]
+color = Color(0.22, 0.22, 0.26, 1)
+polygon = PackedVector2Array(-4, 0, -1, 0, -1, 150, -4, 150)
+
+[node name="Crossbar1" type="Polygon2D" parent="Geometry/RoofAntenna"]
+color = Color(0.16, 0.16, 0.18, 1)
+polygon = PackedVector2Array(-38, 35, 38, 35, 38, 43, -38, 43)
+
+[node name="Crossbar2" type="Polygon2D" parent="Geometry/RoofAntenna"]
+color = Color(0.16, 0.16, 0.18, 1)
+polygon = PackedVector2Array(-28, 70, 28, 70, 28, 76, -28, 76)
+
+[node name="Tip" type="Polygon2D" parent="Geometry/RoofAntenna"]
+color = Color(0.22, 0.22, 0.24, 1)
+polygon = PackedVector2Array(-8, -12, 8, -12, 8, 0, -8, 0)
+
+[node name="AntennaLight" type="Polygon2D" parent="Geometry/RoofAntenna"]
+color = Color(0.9, 0.2, 0.15, 0.8)
+polygon = PackedVector2Array(-3, -15, 3, -15, 3, -12, -3, -12)
+
+[node name="AntennaLightGlow" type="Polygon2D" parent="Geometry/RoofAntenna"]
+color = Color(0.9, 0.2, 0.15, 0.15)
+polygon = PackedVector2Array(-10, -22, 10, -22, 10, -5, -10, -5)
+
+[node name="Antenna2" type="Node2D" parent="Geometry"]
+z_index = 9
+position = Vector2(650, 280)
+
+[node name="Mast" type="Polygon2D" parent="Geometry/Antenna2"]
+color = Color(0.14, 0.14, 0.16, 1)
+polygon = PackedVector2Array(-3, 0, 3, 0, 3, 110, -3, 110)
+
+[node name="Crossbar" type="Polygon2D" parent="Geometry/Antenna2"]
+color = Color(0.14, 0.14, 0.16, 1)
+polygon = PackedVector2Array(-20, 30, 20, 30, 20, 35, -20, 35)
+
+[node name="Dish" type="Polygon2D" parent="Geometry/Antenna2"]
+color = Color(0.17, 0.17, 0.2, 1)
+polygon = PackedVector2Array(3, 20, 20, 10, 22, 14, 3, 26)
+
+[node name="CableRun" type="Node2D" parent="Geometry"]
+z_index = 7
+
+[node name="Cable1" type="Polygon2D" parent="Geometry/CableRun"]
+color = Color(0.06, 0.06, 0.07, 0.7)
+polygon = PackedVector2Array(-600, 388, -480, 388, -480, 390, -600, 390)
+
+[node name="Cable2" type="Polygon2D" parent="Geometry/CableRun"]
+color = Color(0.06, 0.06, 0.07, 0.7)
+polygon = PackedVector2Array(-480, 386, -200, 386, -200, 388, -480, 388)
+
+[node name="Cable3" type="Polygon2D" parent="Geometry/CableRun"]
+color = Color(0.06, 0.06, 0.07, 0.6)
+polygon = PackedVector2Array(140, 388, 400, 388, 400, 390, 140, 390)
+
+[node name="CableDroop" type="Polygon2D" parent="Geometry/CableRun"]
+color = Color(0.06, 0.06, 0.07, 0.5)
+polygon = PackedVector2Array(-200, 386, 140, 386, 130, 396, -190, 396)
+
+[node name="LeftWall" type="Node2D" parent="Geometry" unique_id=1335442272]
+position = Vector2(-1000, 60)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/LeftWall" unique_id=1486988801]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/LeftWall/StaticBody2D" unique_id=1599273009]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/LeftWall" unique_id=1366192024]
+visible = false
+color = Color(0.027451, 0.0352941, 0.0941176, 1)
+polygon = PackedVector2Array(-30, -400, 30, -400, 30, 400, -30, 400)
+
+[node name="RightWall" type="Node2D" parent="Geometry" unique_id=208849271]
+position = Vector2(1000, 60)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/RightWall" unique_id=1575580159]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/RightWall/StaticBody2D" unique_id=705401592]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/RightWall" unique_id=1855199153]
+visible = false
+color = Color(0.027451, 0.0352941, 0.0941176, 1)
+polygon = PackedVector2Array(-30, -400, 30, -400, 30, 400, -30, 400)
+
+[node name="DoorToRoomB" type="Area2D" parent="." unique_id=681127279]
+position = Vector2(930, 310)
+script = ExtResource("1")
+target_room_path = "res://scenes/rooms/Street.tscn"
+target_spawn = "SpawnFromA"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToRoomB" unique_id=1128599083]
+shape = SubResource("RectangleShape2D_door")
+
+
+[node name="EnemySpawn1" type="Marker2D" parent="."]
+position = Vector2(-600, 360)
+
+[node name="EnemySpawn2" type="Marker2D" parent="."]
+position = Vector2(-200, 360)
+
+[node name="EnemySpawn3" type="Marker2D" parent="."]
+position = Vector2(300, 360)
+
+[node name="EnemySpawn4" type="Marker2D" parent="."]
+position = Vector2(700, 360)
+
+[node name="HoleToInterior" type="Area2D" parent="."]
+position = Vector2(0, 390)
+script = ExtResource("7")
+target_room_path = "res://scenes/rooms/TopFloor.tscn"
+target_spawn = "SpawnFromHole"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoleToInterior"]
+shape = SubResource("RectangleShape2D_hole")
+
+[node name="DropDownCue" type="Node2D" parent="Geometry"]
+z_index = 11
+position = Vector2(0, 420)
+
+[node name="HoleLip" type="Polygon2D" parent="Geometry/DropDownCue"]
+color = Color(0.85, 0.82, 0.72, 0.18)
+polygon = PackedVector2Array(-150, 0, 150, 0, 150, 10, -150, 10)
+
+[node name="HoleShadow" type="Polygon2D" parent="Geometry/DropDownCue"]
+color = Color(0.0, 0.0, 0.0, 0.22)
+polygon = PackedVector2Array(-150, 10, 150, 10, 150, 60, -150, 60)
+
+[node name="HoleWalls" type="Polygon2D" parent="Geometry/DropDownCue"]
+color = Color(0.0, 0.0, 0.0, 0.18)
+polygon = PackedVector2Array(-150, 0, -130, 0, -130, 60, -150, 60, 130, 0, 150, 0, 150, 60, 130, 60)
+
+[node name="HoleRebar1" type="Polygon2D" parent="Geometry/DropDownCue"]
+color = Color(0.3, 0.22, 0.15, 0.6)
+polygon = PackedVector2Array(-140, 4, -136, 4, -130, 30, -134, 30)
+
+[node name="HoleRebar2" type="Polygon2D" parent="Geometry/DropDownCue"]
+color = Color(0.3, 0.22, 0.15, 0.5)
+polygon = PackedVector2Array(136, 4, 140, 4, 134, 25, 130, 25)
+
+
+[node name="FacadeVines" type="Node2D" parent="Geometry"]
+z_index = -8
+
+[node name="FarLeftMass" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.06, 0.18, 0.08, 0.85)
+polygon = PackedVector2Array(-1000, 434, -840, 434, -830, 480, -820, 540, -830, 600, -840, 660, -835, 730, -830, 800, -840, 860, -860, 900, -1000, 900)
+
+[node name="FarLeftMassHighlight" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.1, 0.28, 0.14, 0.65)
+polygon = PackedVector2Array(-980, 434, -860, 434, -855, 470, -850, 530, -860, 580, -870, 640, -860, 700, -855, 760, -870, 820, -900, 860, -980, 860)
+
+[node name="FarLeftStemA" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.05, 0.15, 0.07, 0.9)
+polygon = PackedVector2Array(-900, 434, -892, 434, -886, 500, -880, 570, -886, 640, -892, 710, -888, 780, -882, 860, -890, 860, -896, 780, -900, 710, -894, 640, -888, 570, -894, 500)
+
+[node name="FarLeftBranchA" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.05, 0.15, 0.07, 0.8)
+polygon = PackedVector2Array(-890, 540, -884, 536, -850, 510, -820, 500, -810, 508, -816, 512, -846, 520, -882, 548)
+
+[node name="FarLeftBranchB" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.05, 0.15, 0.07, 0.75)
+polygon = PackedVector2Array(-894, 680, -888, 676, -920, 650, -950, 630, -956, 638, -926, 658)
+
+[node name="FarLeftFoliageA" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.08, 0.24, 0.12, 0.7)
+polygon = PackedVector2Array(-930, 460, -890, 450, -860, 460, -850, 490, -860, 520, -890, 530, -930, 520, -940, 490)
+
+[node name="FarLeftFoliageB" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.1, 0.3, 0.15, 0.6)
+polygon = PackedVector2Array(-870, 590, -840, 580, -820, 590, -815, 620, -825, 650, -850, 660, -875, 650, -880, 620)
+
+[node name="FarLeftFoliageC" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.07, 0.22, 0.1, 0.65)
+polygon = PackedVector2Array(-960, 700, -920, 690, -900, 710, -910, 750, -940, 760, -970, 740)
+
+[node name="FarRightMass" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.06, 0.18, 0.08, 0.85)
+polygon = PackedVector2Array(840, 434, 1000, 434, 1000, 900, 860, 900, 840, 860, 835, 800, 840, 730, 845, 660, 835, 600, 825, 540, 835, 480)
+
+[node name="FarRightMassHighlight" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.1, 0.28, 0.14, 0.65)
+polygon = PackedVector2Array(860, 434, 980, 434, 980, 860, 900, 860, 870, 820, 860, 760, 865, 700, 875, 640, 865, 580, 855, 530, 860, 470)
+
+[node name="FarRightStemA" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.05, 0.15, 0.07, 0.9)
+polygon = PackedVector2Array(892, 434, 900, 434, 894, 500, 888, 570, 894, 640, 900, 710, 896, 780, 890, 860, 882, 860, 888, 780, 892, 710, 886, 640, 880, 570, 886, 500)
+
+[node name="FarRightBranchA" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.05, 0.15, 0.07, 0.8)
+polygon = PackedVector2Array(884, 536, 890, 540, 882, 548, 846, 520, 816, 512, 810, 508, 820, 500, 850, 510)
+
+[node name="FarRightFoliageA" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.08, 0.24, 0.12, 0.7)
+polygon = PackedVector2Array(860, 460, 900, 450, 930, 460, 940, 490, 930, 520, 900, 530, 860, 520, 850, 490)
+
+[node name="FarRightFoliageB" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.1, 0.3, 0.15, 0.6)
+polygon = PackedVector2Array(820, 590, 850, 580, 875, 590, 880, 620, 870, 650, 845, 660, 820, 650, 815, 620)
+
+[node name="FarRightFoliageC" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.07, 0.22, 0.1, 0.65)
+polygon = PackedVector2Array(900, 700, 940, 690, 970, 710, 960, 750, 930, 760, 900, 740)
+
+[node name="MidLeftStem" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.05, 0.16, 0.07, 0.8)
+polygon = PackedVector2Array(-630, 434, -622, 434, -618, 500, -624, 570, -618, 640, -614, 700, -622, 700, -626, 640, -632, 570, -626, 500)
+
+[node name="MidLeftFoliageA" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.07, 0.22, 0.1, 0.65)
+polygon = PackedVector2Array(-660, 460, -620, 450, -590, 470, -600, 510, -630, 520, -660, 500)
+
+[node name="MidLeftFoliageB" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.09, 0.26, 0.13, 0.55)
+polygon = PackedVector2Array(-650, 590, -610, 580, -590, 600, -600, 640, -640, 650, -660, 630)
+
+[node name="MidLeftBranch" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.05, 0.16, 0.07, 0.7)
+polygon = PackedVector2Array(-624, 520, -618, 516, -580, 500, -560, 496, -556, 502, -578, 508, -616, 528)
+
+[node name="MidRightStem" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.05, 0.16, 0.07, 0.8)
+polygon = PackedVector2Array(622, 434, 630, 434, 626, 500, 632, 570, 626, 640, 622, 700, 614, 700, 618, 640, 624, 570, 618, 500)
+
+[node name="MidRightFoliageA" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.07, 0.22, 0.1, 0.65)
+polygon = PackedVector2Array(590, 470, 620, 450, 660, 460, 660, 500, 630, 520, 590, 510)
+
+[node name="MidRightFoliageB" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.09, 0.26, 0.13, 0.55)
+polygon = PackedVector2Array(590, 600, 620, 580, 660, 590, 660, 630, 630, 650, 590, 640)
+
+[node name="CenterLeftTendril" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.05, 0.16, 0.07, 0.6)
+polygon = PackedVector2Array(-380, 434, -374, 434, -370, 490, -374, 550, -380, 600, -386, 600, -380, 550, -376, 490)
+
+[node name="CenterLeftFoliage" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.07, 0.2, 0.1, 0.5)
+polygon = PackedVector2Array(-400, 470, -370, 460, -350, 475, -355, 510, -380, 520, -405, 505)
+
+[node name="CenterRightTendril" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.05, 0.16, 0.07, 0.6)
+polygon = PackedVector2Array(340, 434, 346, 434, 350, 490, 346, 550, 340, 580, 334, 580, 340, 550, 344, 490)
+
+[node name="CenterRightFoliage" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.07, 0.2, 0.1, 0.5)
+polygon = PackedVector2Array(320, 475, 350, 460, 380, 470, 375, 510, 350, 520, 320, 505)
+
+[node name="WindowVineW1" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.06, 0.2, 0.09, 0.55)
+polygon = PackedVector2Array(-810, 505, -790, 505, -790, 508, -700, 508, -700, 505, -690, 505, -690, 512, -810, 512)
+
+[node name="WindowVineW8" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.06, 0.2, 0.09, 0.55)
+polygon = PackedVector2Array(-810, 695, -790, 695, -790, 698, -700, 698, -700, 695, -690, 695, -690, 702, -810, 702)
+
+[node name="WindowVineW6" type="Polygon2D" parent="Geometry/FacadeVines"]
+color = Color(0.06, 0.2, 0.09, 0.5)
+polygon = PackedVector2Array(440, 505, 460, 505, 460, 508, 550, 508, 550, 505, 560, 505, 560, 512, 440, 512)
+
+[node name="FacadeDecay" type="Node2D" parent="Geometry"]
+z_index = -8
+
+[node name="CrackL1" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.06, 0.05, 0.04, 0.55)
+polygon = PackedVector2Array(-822, 480, -818, 478, -808, 520, -812, 560, -820, 590, -826, 610, -830, 610, -824, 590, -816, 560, -812, 520)
+
+[node name="CrackL2" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.06, 0.05, 0.04, 0.5)
+polygon = PackedVector2Array(-502, 610, -498, 608, -486, 660, -490, 710, -498, 740, -504, 740, -496, 710, -492, 660)
+
+[node name="CrackR1" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.06, 0.05, 0.04, 0.55)
+polygon = PackedVector2Array(758, 490, 762, 488, 774, 540, 768, 590, 756, 620, 752, 620, 762, 590, 770, 540)
+
+[node name="CrackR2" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.06, 0.05, 0.04, 0.5)
+polygon = PackedVector2Array(298, 630, 302, 628, 314, 680, 308, 730, 298, 760, 294, 760, 304, 730, 310, 680)
+
+[node name="CrackCenter" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.06, 0.05, 0.04, 0.4)
+polygon = PackedVector2Array(-52, 580, -48, 578, -40, 620, -46, 660, -54, 690, -58, 690, -50, 660, -44, 620)
+
+[node name="DecayPatchL1" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.08, 0.07, 0.05, 0.45)
+polygon = PackedVector2Array(-960, 490, -870, 490, -860, 570, -970, 570)
+
+[node name="DecayPatchL2" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.07, 0.06, 0.04, 0.4)
+polygon = PackedVector2Array(-720, 670, -620, 670, -610, 750, -730, 750)
+
+[node name="DecayPatchR1" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.08, 0.07, 0.05, 0.45)
+polygon = PackedVector2Array(840, 510, 970, 510, 980, 590, 830, 590)
+
+[node name="DecayPatchR2" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.07, 0.06, 0.04, 0.4)
+polygon = PackedVector2Array(380, 690, 530, 690, 540, 770, 370, 770)
+
+[node name="DecayPatchCenter" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.07, 0.06, 0.04, 0.35)
+polygon = PackedVector2Array(-120, 590, 80, 590, 90, 670, -130, 670)
+
+[node name="MossStripeL" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.06, 0.18, 0.08, 0.4)
+polygon = PackedVector2Array(-1000, 434, -820, 434, -820, 446, -1000, 446)
+
+[node name="MossStripeR" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.06, 0.18, 0.08, 0.4)
+polygon = PackedVector2Array(820, 434, 1000, 434, 1000, 446, 820, 446)
+
+[node name="MossStripeCenter" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.06, 0.18, 0.08, 0.25)
+polygon = PackedVector2Array(-250, 434, 250, 434, 250, 442, -250, 442)
+
+[node name="MossOnBandL" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.06, 0.18, 0.08, 0.35)
+polygon = PackedVector2Array(-1000, 612, -800, 612, -800, 620, -1000, 620)
+
+[node name="MossOnBandR" type="Polygon2D" parent="Geometry/FacadeDecay"]
+color = Color(0.06, 0.18, 0.08, 0.35)
+polygon = PackedVector2Array(800, 612, 1000, 612, 1000, 620, 800, 620)
+
+[node name="RoofVines" type="Node2D" parent="Geometry"]
+z_index = 11
+
+[node name="OverParapetL1Stem" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.9)
+polygon = PackedVector2Array(-928, 310, -918, 308, -912, 340, -908, 370, -904, 392, -910, 392, -914, 370, -918, 340)
+
+[node name="OverParapetL1FoliageTop" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.08, 0.24, 0.12, 0.8)
+polygon = PackedVector2Array(-960, 300, -920, 290, -890, 300, -880, 320, -890, 345, -920, 355, -955, 345, -965, 320)
+
+[node name="OverParapetL1FoliageTopLight" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.12, 0.34, 0.18, 0.55)
+polygon = PackedVector2Array(-950, 300, -925, 294, -900, 304, -905, 325, -930, 332, -952, 320)
+
+[node name="OverParapetL1Drape" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.8)
+polygon = PackedVector2Array(-912, 370, -904, 368, -896, 430, -890, 500, -886, 560, -894, 560, -898, 500, -904, 430)
+
+[node name="OverParapetL1DrapeFoliage" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.07, 0.22, 0.1, 0.6)
+polygon = PackedVector2Array(-920, 440, -890, 430, -870, 450, -880, 490, -910, 500, -930, 480)
+
+[node name="OverParapetL2Stem" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.85)
+polygon = PackedVector2Array(-790, 320, -782, 318, -778, 350, -774, 392, -782, 392, -784, 350)
+
+[node name="OverParapetL2FoliageTop" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.08, 0.24, 0.12, 0.7)
+polygon = PackedVector2Array(-815, 310, -785, 302, -760, 312, -755, 332, -770, 348, -800, 350, -820, 335)
+
+[node name="OverParapetL2Drape" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.75)
+polygon = PackedVector2Array(-778, 392, -770, 390, -764, 440, -758, 500, -766, 500, -772, 440)
+
+[node name="OverParapetL2DrapeFoliage" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.07, 0.22, 0.1, 0.55)
+polygon = PackedVector2Array(-790, 430, -760, 420, -740, 440, -750, 475, -780, 480, -800, 460)
+
+[node name="OverParapetR1Stem" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.9)
+polygon = PackedVector2Array(848, 315, 858, 313, 854, 345, 850, 375, 846, 392, 838, 392, 842, 375, 846, 345)
+
+[node name="OverParapetR1FoliageTop" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.08, 0.24, 0.12, 0.8)
+polygon = PackedVector2Array(820, 305, 855, 295, 885, 305, 890, 325, 880, 348, 850, 355, 825, 345, 815, 325)
+
+[node name="OverParapetR1FoliageTopLight" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.12, 0.34, 0.18, 0.55)
+polygon = PackedVector2Array(830, 306, 855, 298, 878, 308, 875, 328, 852, 338, 828, 325)
+
+[node name="OverParapetR1Drape" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.8)
+polygon = PackedVector2Array(846, 375, 854, 373, 862, 430, 868, 510, 874, 580, 866, 580, 860, 510, 854, 430)
+
+[node name="OverParapetR1DrapeFoliage" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.07, 0.22, 0.1, 0.6)
+polygon = PackedVector2Array(840, 450, 870, 440, 890, 460, 880, 500, 850, 510, 830, 490)
+
+[node name="OverParapetR2Stem" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.8)
+polygon = PackedVector2Array(558, 328, 568, 326, 572, 355, 576, 392, 568, 392, 564, 355)
+
+[node name="OverParapetR2FoliageTop" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.08, 0.24, 0.12, 0.65)
+polygon = PackedVector2Array(535, 320, 565, 312, 590, 322, 588, 342, 570, 352, 540, 348, 530, 335)
+
+[node name="OverParapetR2Drape" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.7)
+polygon = PackedVector2Array(572, 392, 580, 390, 584, 440, 588, 490, 580, 490, 576, 440)
+
+[node name="OverParapetCenterStem" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.75)
+polygon = PackedVector2Array(-308, 330, -298, 328, -294, 355, -290, 392, -298, 392, -302, 355)
+
+[node name="OverParapetCenterFoliage" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.08, 0.22, 0.1, 0.6)
+polygon = PackedVector2Array(-330, 322, -300, 314, -275, 324, -272, 342, -285, 352, -320, 350, -335, 338)
+
+[node name="OverParapetCenterDrape" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.65)
+polygon = PackedVector2Array(-294, 392, -286, 390, -280, 440, -276, 480, -284, 480, -288, 440)
+
+[node name="RoofCreepL" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.06, 0.18, 0.08, 0.55)
+polygon = PackedVector2Array(-960, 386, -920, 384, -870, 388, -810, 390, -760, 388, -720, 390, -720, 396, -760, 394, -810, 396, -870, 394, -920, 390, -960, 392)
+
+[node name="RoofCreepLFoliage" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.07, 0.22, 0.1, 0.45)
+polygon = PackedVector2Array(-920, 382, -880, 378, -840, 384, -830, 394, -850, 398, -900, 396, -930, 392)
+
+[node name="RoofCreepR" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.06, 0.18, 0.08, 0.55)
+polygon = PackedVector2Array(680, 390, 740, 388, 800, 386, 860, 388, 920, 384, 960, 386, 960, 392, 920, 390, 860, 394, 800, 392, 740, 394, 680, 396)
+
+[node name="RoofCreepRFoliage" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.07, 0.22, 0.1, 0.45)
+polygon = PackedVector2Array(840, 382, 880, 378, 920, 384, 930, 394, 910, 398, 860, 396, 830, 392)
+
+[node name="RoofCreepCenter" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.06, 0.16, 0.07, 0.4)
+polygon = PackedVector2Array(-420, 388, -360, 386, -300, 390, -240, 388, -200, 390, -200, 396, -240, 394, -300, 396, -360, 392, -420, 394)
+
+[node name="MossParapetL" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.06, 0.18, 0.08, 0.4)
+polygon = PackedVector2Array(-1000, 346, -840, 346, -840, 358, -1000, 358)
+
+[node name="MossParapetR" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.06, 0.18, 0.08, 0.4)
+polygon = PackedVector2Array(780, 346, 1000, 346, 1000, 358, 780, 358)
+
+[node name="MossParapetMid" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.06, 0.18, 0.08, 0.3)
+polygon = PackedVector2Array(-420, 348, -240, 348, -240, 356, -420, 356)
+
+[node name="MossRoofL" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.16, 0.07, 0.35)
+polygon = PackedVector2Array(-970, 386, -820, 386, -810, 396, -980, 396)
+
+[node name="MossRoofR" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.16, 0.07, 0.35)
+polygon = PackedVector2Array(760, 386, 960, 386, 970, 396, 750, 396)
+
+[node name="HoleVineL" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.75)
+polygon = PackedVector2Array(-138, 388, -128, 386, -120, 420, -114, 460, -108, 510, -118, 510, -122, 460, -128, 420)
+
+[node name="HoleVineR" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.05, 0.15, 0.07, 0.75)
+polygon = PackedVector2Array(128, 386, 138, 388, 128, 420, 122, 460, 118, 510, 108, 510, 114, 460, 120, 420)
+
+[node name="HoleFoliageL" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.07, 0.22, 0.1, 0.6)
+polygon = PackedVector2Array(-155, 420, -125, 410, -105, 430, -110, 465, -135, 475, -160, 455)
+
+[node name="HoleFoliageR" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.07, 0.22, 0.1, 0.6)
+polygon = PackedVector2Array(105, 430, 125, 410, 155, 420, 160, 455, 135, 475, 110, 465)
+
+[node name="VineGlowL" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.1, 0.6, 0.3, 0.04)
+polygon = PackedVector2Array(-980, 280, -850, 280, -820, 420, -1000, 420)
+
+[node name="VineGlowR" type="Polygon2D" parent="Geometry/RoofVines"]
+color = Color(0.1, 0.6, 0.3, 0.04)
+polygon = PackedVector2Array(850, 280, 980, 280, 1000, 420, 820, 420)

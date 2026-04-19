@@ -1,0 +1,18 @@
+{
+  "scanned_at": "2026-02-22T20:16:33.122Z",
+  "project_name": "glowfall",
+  "project_path": "/Users/ethandellaposta/Documents/git/glowfall",
+  "type": [],
+  "languages": [],
+  "frameworks": [],
+  "build_system": null,
+  "package_manager": null,
+  "entry_points": [],
+  "config_files": {
+    "README.md": "# Glowfall — Metroidvania Platformer\n\nA Godot 4.6 2D metroidvania platformer template powered by [KoBeWi's Metroidvania-System](https://github.com/KoBeWi/Metroidvania-System).\n\n## Getting Started\n\n1. **Open in Godot 4.6+** — double-click `project.godot` or open it from the Godot project manager.\n2. On first launch the MetSys plugin will add its autoload and **restart the editor automatically** — this is normal.\n3. Press **F5** (or the Play button) to run the game.\n\n## Controls\n\n| Action | Key |\n|--------|-----|\n| Move left / right | Arrow keys or A / D |\n| Jump (+ double jump once unlocked) | Space / Enter |\n\n## Project Structure\n\n```\nproject.godot              – project config (autoloads, plugin, display)\nMetSysSettings.tres        – Metroidvania-System settings (cell size, theme)\nMapData",
+    "glowfall.code-workspace": null
+  },
+  "source_structure": [],
+  "dependencies": [],
+  "description": "A Godot 4.6 2D metroidvania platformer template powered by [KoBeWi's Metroidvania-System](https://github.com/KoBeWi/Metroidvania-System)."
+}

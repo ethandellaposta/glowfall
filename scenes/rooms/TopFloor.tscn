@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://cjlx422c7whft"]
+
+[ext_resource type="Script" path="res://scenes/rooms/Door.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/objects/CityParallax.tscn" id="5"]
+[ext_resource type="Script" path="res://scenes/components/FloorGenerator.gd" id="7"]
+[ext_resource type="Script" path="res://scenes/components/CeilingHole.gd" id="8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceiling"]
+size = Vector2(880, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceiling_right"]
+size = Vector2(880, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hole"]
+size = Vector2(240, 120)
+
+[node name="TopFloor" type="Node2D"]
+
+[node name="CityParallax" parent="." instance=ExtResource("5")]
+
+[node name="RoomInstance" parent="." instance=ExtResource("2")]
+
+[node name="SpawnFromHole" type="Marker2D" parent="."]
+position = Vector2(0, 360)
+
+[node name="SpawnFromB" type="Marker2D" parent="."]
+position = Vector2(0, 360)
+
+[node name="Geometry" type="Node2D" parent="."]
+script = ExtResource("7")
+
+[node name="Ceiling" type="Node2D" parent="Geometry"]
+position = Vector2(0, 90)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Geometry/Ceiling"]
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="Geometry/Ceiling/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ceiling")
+position = Vector2(-560, 0)
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="Geometry/Ceiling/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ceiling_right")
+position = Vector2(560, 0)
+
+[node name="CeilingLeft" type="Polygon2D" parent="Geometry/Ceiling"]
+color = Color(0.1, 0.1, 0.12, 1)
+polygon = PackedVector2Array(-1000, -30, -120, -30, -120, 30, -1000, 30)
+
+[node name="CeilingRight" type="Polygon2D" parent="Geometry/Ceiling"]
+color = Color(0.1, 0.1, 0.12, 1)
+polygon = PackedVector2Array(120, -30, 1000, -30, 1000, 30, 120, 30)
+
+[node name="CeilingAbove" type="Polygon2D" parent="Geometry/Ceiling"]
+z_index = 5
+color = Color(0.08, 0.08, 0.1, 1)
+polygon = PackedVector2Array(-1200, -600, 1200, -600, 1200, -30, -1200, -30)
+
+[node name="HoleFadeLeft1" type="Polygon2D" parent="Geometry/Ceiling"]
+z_index = 4
+color = Color(0.08, 0.08, 0.1, 0.85)
+polygon = PackedVector2Array(-170, -30, -120, -30, -120, 30, -170, 30)
+
+[node name="HoleFadeLeft2" type="Polygon2D" parent="Geometry/Ceiling"]
+z_index = 4
+color = Color(0.08, 0.08, 0.1, 0.55)
+polygon = PackedVector2Array(-190, -30, -170, -30, -170, 30, -190, 30)
+
+[node name="HoleFadeLeft3" type="Polygon2D" parent="Geometry/Ceiling"]
+z_index = 4
+color = Color(0.08, 0.08, 0.1, 0.25)
+polygon = PackedVector2Array(-210, -30, -190, -30, -190, 30, -210, 30)
+
+[node name="HoleFadeRight1" type="Polygon2D" parent="Geometry/Ceiling"]
+z_index = 4
+color = Color(0.08, 0.08, 0.1, 0.85)
+polygon = PackedVector2Array(120, -30, 170, -30, 170, 30, 120, 30)
+
+[node name="HoleFadeRight2" type="Polygon2D" parent="Geometry/Ceiling"]
+z_index = 4
+color = Color(0.08, 0.08, 0.1, 0.55)
+polygon = PackedVector2Array(170, -30, 190, -30, 190, 30, 170, 30)
+
+[node name="HoleFadeRight3" type="Polygon2D" parent="Geometry/Ceiling"]
+z_index = 4
+color = Color(0.08, 0.08, 0.1, 0.25)
+polygon = PackedVector2Array(190, -30, 210, -30, 210, 30, 190, 30)
+
+[node name="HoleSkyGlow" type="Polygon2D" parent="Geometry/Ceiling"]
+z_index = 3
+color = Color(0.35, 0.55, 0.8, 0.2)
+polygon = PackedVector2Array(-120, -30, 120, -30, 120, 30, -120, 30)
+
+[node name="HoleUpToRoof" type="Area2D" parent="."]
+position = Vector2(0, 130)
+script = ExtResource("8")
+target_room_path = "res://scenes/rooms/Roof.tscn"
+target_spawn = "SpawnFromHole"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoleUpToRoof"]
+shape = SubResource("RectangleShape2D_hole")
+
+[node name="EnemySpawn1" type="Marker2D" parent="."]
+position = Vector2(-600, 360)
+
+[node name="EnemySpawn2" type="Marker2D" parent="."]
+position = Vector2(400, 360)

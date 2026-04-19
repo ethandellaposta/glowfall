@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tests/TestRunner.gd" id="1"]
+
+[node name="TestRunner" type="Node"]
+script = ExtResource("1")
+auto_run_on_start = true
+generate_html_report = true
+run_performance_tests = true
+run_e2e_tests = true

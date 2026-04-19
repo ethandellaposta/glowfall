@@ -12,6 +12,9 @@ export/
 *.zip
 *.mov
 *_frames
+*_captures
+*_scratch
 
-// placeholder animations for now
+# placeholder animations for now
 assets/robot
+*.uid
